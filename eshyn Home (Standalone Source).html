@@ -3,25 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="ext-resource-dependency" content="./assets/degh.jpg" data-resource-id="degh" />
-<meta name="ext-resource-dependency" content="./assets/lavender.jpg" data-resource-id="lavender" />
-<meta name="ext-resource-dependency" content="./assets/nocturne.jpg" data-resource-id="nocturne" />
-<meta name="ext-resource-dependency" content="./assets/oudh.jpg" data-resource-id="oudh" />
-<meta name="ext-resource-dependency" content="./assets/rose.jpg" data-resource-id="rose" />
-<meta name="ext-resource-dependency" content="./assets/chandan.jpg" data-resource-id="chandan" />
-<meta name="ext-resource-dependency" content="./assets/jasmine.jpg" data-resource-id="jasmine" />
-<meta name="ext-resource-dependency" content="./assets/khas.jpg" data-resource-id="khas" />
-<meta name="ext-resource-dependency" content="./assets/seal.png" data-resource-id="seal" />
 <script src="./support.js"></script>
+<meta name="ext-resource-dependency" content="./assets/degh.jpg">
+<meta name="ext-resource-dependency" content="./assets/lavender.jpg">
+<meta name="ext-resource-dependency" content="./assets/nocturne.jpg">
+<meta name="ext-resource-dependency" content="./assets/oudh.jpg">
+<meta name="ext-resource-dependency" content="./assets/rose.jpg">
+<meta name="ext-resource-dependency" content="./assets/chandan.jpg">
+<meta name="ext-resource-dependency" content="./assets/jasmine.jpg">
+<meta name="ext-resource-dependency" content="./assets/khas.jpg">
+<meta name="ext-resource-dependency" content="./assets/seal.png">
 </head>
 <body>
 <template id="__bundler_thumbnail" data-bg-color="#F5EFE6">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#E7DACA"/>
-    <circle cx="600" cy="360" r="140" fill="#6B1E1E"/>
-    <text x="600" y="380" font-family="Georgia,serif" font-size="90" fill="#F5EFE6" text-anchor="middle">e</text>
-    <text x="600" y="560" font-family="Georgia,serif" font-size="56" fill="#1E1B18" text-anchor="middle">eshyn</text>
-  </svg>
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#E7DACA"/><text x="600" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="200" fill="#1E1B18">eshyn</text></svg>
 </template>
 <x-dc>
 <helmet>
@@ -214,7 +209,7 @@ input::placeholder{color:#6F675E}
       <sc-for list="{{ bestsellers }}" as="p" hint-placeholder-count="6">
         <a href="#collection" data-reveal="card" data-delay="{{ p.delay }}" style="flex:none;width:{{ bestCardW }};scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
           <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:#F5EFE6">
-            <div style="{{ p.bestImgStyle }}">
+            <img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);mix-blend-mode:multiply;transition:transform 700ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale(1.27)">
           </div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
             <span style="font-family:'Gilda Display',serif;font-size:19px">{{ p.name }}</span>
@@ -230,15 +225,15 @@ input::placeholder{color:#6F675E}
 <section data-screen-label="05 Shop by family" style="padding:0 0 clamp(96px,10.5vw,152px)">
   <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(168,128,63,0.3);margin-bottom:32px">
-      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Shop by family</h2>
-      <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Four families · Eight scents</span>
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Shop by collection</h2>
+      <a href="./eshyn Collection.dc.html" style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">View all →</a>
     </div>
     <div onMouseEnter="{{ pauseMarquee }}" onMouseLeave="{{ resumeMarquee }}" style="overflow:hidden;margin:0 clamp(-20px,-2.22vw,-32px)">
       <div ref="{{ marqueeRef }}" style="display:flex;gap:24px;width:max-content;padding:0 clamp(20px,2.22vw,32px)">
         <sc-for list="{{ familiesLoop }}" as="f" hint-placeholder-count="8">
-          <a href="#collection" style="display:flex;flex-direction:column;gap:16px;flex:none;width:{{ famCardW }}">
-            <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:#E7DACA">
-              <div style="{{ f.imgStyle }}">
+          <a href="{{ f.href }}" style="display:flex;flex-direction:column;gap:16px;flex:none;width:{{ famCardW }}">
+            <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:{{ f.tint }}">
+              <img src="{{ f.img }}" alt="{{ f.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale({{ f.scale }});transform-origin:{{ f.origin }};mix-blend-mode:multiply;transition:transform 900ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale({{ f.hoverScale }});transform-origin:{{ f.origin }}">
             </div>
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
               <span style="font-family:'Gilda Display',serif;font-size:22px;line-height:1.2">{{ f.name }}</span>
@@ -267,8 +262,8 @@ input::placeholder{color:#6F675E}
           <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#F5EFE6">
             <div style="position:absolute;inset:0;background:{{ p.tintBg }};transition:background 700ms cubic-bezier(0.22,1,0.36,1)"></div>
             <a href="#" aria-label="{{ p.name }}" style="position:absolute;inset:0;display:block">
-              <div style="{{ p.colImgStyle1 }}"></div>
-              <div style="{{ p.colImgStyle2 }}"></div>
+              <img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);mix-blend-mode:multiply;opacity:{{ p.baseOp }};transition:opacity 800ms cubic-bezier(0.22,1,0.36,1)">
+              <img src="{{ p.img }}" alt="" aria-hidden="true" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale({{ p.detScale }});transform-origin:50.5% 69%;mix-blend-mode:multiply;opacity:{{ p.detOp }};transition:opacity 800ms cubic-bezier(0.22,1,0.36,1),transform 1400ms cubic-bezier(0.22,1,0.36,1)">
             </a>
             <button onClick="{{ p.add }}" style="position:absolute;left:12px;right:12px;bottom:12px;height:44px;background:#F5EFE6;border:1px solid rgba(30,27,24,0.15);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:{{ p.addOp }};transform:translateY({{ p.addY }});transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),transform 500ms cubic-bezier(0.22,1,0.36,1),background-size 500ms cubic-bezier(0.22,1,0.36,1),color 300ms;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:100% 0%" style-hover="background-size:100% 100%;color:#F5EFE6">{{ p.addLabel }}</button>
           </div>
@@ -403,19 +398,19 @@ input::placeholder{color:#6F675E}
 <!-- 11 Discovery set -->
 <section id="discovery" data-screen-label="11 Discovery set" style="padding:clamp(96px,10.5vw,152px) 0">
   <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:48px 24px;align-items:center">
-    <div data-reveal="up" onMouseEnter="{{ pauseDiscovery }}" onMouseLeave="{{ resumeDiscovery }}" style="grid-column:{{ discImg }};background:#E7DACA;padding:clamp(28px,3.6vw,52px) 0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)">
+    <div data-reveal="up" onMouseEnter="{{ pauseDiscovery }}" onMouseLeave="{{ resumeDiscovery }}" style="grid-column:{{ discImg }};min-width:0;max-width:100%;background:#E7DACA;padding:clamp(28px,3.6vw,52px) 0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)">
       <div ref="{{ discoveryRef }}" style="display:flex;gap:clamp(14px,1.6vw,22px);width:max-content">
         <sc-for list="{{ discoveryLoop }}" as="p" hint-placeholder-count="16">
           <div style="display:flex;flex-direction:column;gap:8px;flex:none;width:clamp(100px,9.5vw,150px)">
             <div style="aspect-ratio:3/4;overflow:hidden;position:relative;background:{{ p.tintBg2 }}">
-              <div style="{{ p.miniImgStyle }}">
+              <img src="{{ p.img }}" alt="{{ p.miniAlt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.55);transform-origin:50% 55%;mix-blend-mode:multiply">
             </div>
             <span style="height:2px;background:{{ p.tint }};opacity:0.6"></span>
           </div>
         </sc-for>
       </div>
     </div>
-    <div style="grid-column:{{ discText }};display:flex;flex-direction:column;gap:28px">
+    <div style="grid-column:{{ discText }};min-width:0;display:flex;flex-direction:column;gap:28px">
       <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">The discovery set</div>
       <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-0.01em">All eight, before you choose.</h2>
       <p data-reveal="up" data-delay="60" style="margin:0;color:#3D3732;text-wrap:pretty">A mini of every eshyn scent in one box. Wear each for a day, notice which one stays with you, then choose your bottle.</p>
@@ -775,11 +770,6 @@ class Component extends DCLogic {
     if (!go()) { this.lt = setInterval(() => { if (go()) clearInterval(this.lt); }, 200); setTimeout(() => clearInterval(this.lt), 6000); }
   }
   fmt(n) { return '₹' + n.toLocaleString('en-IN'); }
-  resolveImg(path) {
-    const m = /assets\/([\w-]+)\.(jpg|png)$/.exec(path || '');
-    if (m && typeof window !== 'undefined' && window.__resources && window.__resources[m[1]]) return window.__resources[m[1]];
-    return path;
-  }
   addToCart(name, priceNum, meta, img) {
     this.setState(s => {
       const idx = s.cartItems.findIndex(c => c.name === name && c.meta === meta);
@@ -818,28 +808,34 @@ class Component extends DCLogic {
     const sp = (desk, mob) => (m ? (mob || '1 / -1') : desk);
     const ivory = st.scrolled || st.mega || st.drawer;
     const fam = [
-      { name: 'Earthy & Woody', scents: ['Degh', 'Santalum Chandan'], img: this.resolveImg('./assets/degh.jpg'), origin: '50% 76%', scale: 3.4, alt: 'Label detail: a water drop over dry, cracked earth' },
-      { name: 'Floral', scents: ['Shatpatri', 'Jasmine'], img: this.resolveImg('./assets/rose.jpg'), origin: '48% 76%', scale: 3.2, alt: 'Label detail: a soft pink rose' },
-      { name: 'Oriental & Resinous', scents: ['Nocturne', 'Oudh'], img: this.resolveImg('./assets/nocturne.jpg'), origin: '48% 66%', scale: 3.4, alt: 'Label detail: night sky with crescent moon' },
-      { name: 'Fresh & Herbal', scents: ['Lamiaceae', 'Khas'], img: this.resolveImg('./assets/lavender.jpg'), origin: '62% 74%', scale: 3.4, alt: 'Label detail: lavender sprigs' },
-    ].map((f, i) => ({ ...f, count: f.scents.length + ' scents', delay: i * 60, hoverScale: f.scale * 1.06,
-      imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + f.img + ')', backgroundSize: 'cover', backgroundPosition: f.origin, transform: 'scale(' + f.scale + ')', transformOrigin: f.origin, mixBlendMode: 'multiply', transition: 'transform 900ms cubic-bezier(0.22,1,0.36,1)' } }));
-    const familiesLoop = fam.concat(fam);
+      { name: 'Earthy & Woody', scents: ['Degh', 'Santalum Chandan'], img: './assets/degh.jpg', origin: '50% 76%', scale: 3.4, alt: 'Label detail: a water drop over dry, cracked earth' },
+      { name: 'Floral', scents: ['Shatpatri', 'Jasmine'], img: './assets/rose.jpg', origin: '48% 76%', scale: 3.2, alt: 'Label detail: a soft pink rose' },
+      { name: 'Oriental & Resinous', scents: ['Nocturne', 'Oudh'], img: './assets/nocturne.jpg', origin: '48% 66%', scale: 3.4, alt: 'Label detail: night sky with crescent moon' },
+      { name: 'Fresh & Herbal', scents: ['Lamiaceae', 'Khas'], img: './assets/lavender.jpg', origin: '62% 74%', scale: 3.4, alt: 'Label detail: lavender sprigs' },
+    ].map((f, i) => ({ ...f, count: f.scents.length + ' scents', delay: i * 60, hoverScale: f.scale * 1.06 }));
+    const collections = [
+      { name: 'Earthy & Woody', count: '2 scents', img: './assets/degh.jpg', alt: 'Degh bottle', tint: '#DCCAB4' },
+      { name: 'Floral', count: '2 scents', img: './assets/rose.jpg', alt: 'Shatpatri bottle', tint: '#EAD3DF' },
+      { name: 'Oriental & Resinous', count: '2 scents', img: './assets/nocturne.jpg', alt: 'Nocturne bottle', tint: '#D3D4DE' },
+      { name: 'Fresh & Herbal', count: '2 scents', img: './assets/lavender.jpg', alt: 'Lamiaceae bottle', tint: '#DED6E8' },
+      { name: 'Attars', count: '8 scents', img: './assets/chandan.jpg', alt: 'Santalum Chandan attar', tint: '#E3D2BC' },
+      { name: 'Perfume sprays', count: '8 scents', img: './assets/khas.jpg', alt: 'Khas perfume spray', tint: '#D2E1E4' },
+      { name: 'Traditional', count: '1 scent', img: './assets/oudh.jpg', alt: 'Oudh bottle', tint: '#D6CFC6' },
+      { name: 'Discovery set', count: '8 minis', img: './assets/jasmine.jpg', alt: 'Jasmine bottle from the discovery set', tint: '#E4DDCC' },
+    ].map(c => ({ ...c, scale: 1.15, hoverScale: 1.24, origin: '50% 55%', href: './eshyn Collection.dc.html' }));
+    const familiesLoop = collections.concat(collections);
 
     const products = this.P.map((p, i) => {
       const size = st.sizes[i] || 'attar', h = st.hover === i;
       const active = '#1E1B18', idle = '#8A8279';
       return {
         name: p.name, hi: p.hi, kind: p.kind || '', notes: p.notes,
-        img: this.resolveImg('./assets/' + p.img + '.jpg'),
+        img: './assets/' + p.img + '.jpg',
         alt: p.name + ' — square faceted glass bottle with copper cap',
         miniAlt: p.name + ' mini',
         delay: (i % 4) * 60,
         tintBg: h ? p.tint + '1F' : 'transparent', tintBg2: p.tint + '12', tint: p.tint,
         baseOp: h ? 0 : 1, detOp: h ? 1 : 0, detScale: h ? 2.7 : 2.9,
-        colImgStyle1: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', transform: 'scale(1.18)', mixBlendMode: 'multiply', opacity: h ? 0 : 1, transition: 'opacity 800ms cubic-bezier(0.22,1,0.36,1)' },
-        colImgStyle2: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', backgroundPosition: '50.5% 69%', transform: 'scale(' + (h ? 2.7 : 2.9) + ')', mixBlendMode: 'multiply', opacity: h ? 1 : 0, transition: 'opacity 800ms cubic-bezier(0.22,1,0.36,1), transform 1400ms cubic-bezier(0.22,1,0.36,1)' },
-        miniImgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', backgroundPosition: '50% 55%', transform: 'scale(1.55)', mixBlendMode: 'multiply' },
         addOp: m || h ? 1 : 0, addY: m || h ? '0' : '8px', liftY: h ? '-5px' : '0',
         addLabel: st.added === i ? 'Added to bag' : 'Add to bag',
         isAttar: size === 'attar', isSpray: size === 'spray',
@@ -850,7 +846,7 @@ class Component extends DCLogic {
         enter: () => this.setState({ hover: i }), leave: () => this.setState({ hover: -1 }),
         setAttar: () => this.setState(s => ({ sizes: { ...s.sizes, [i]: 'attar' } })),
         setSpray: () => this.setState(s => ({ sizes: { ...s.sizes, [i]: 'spray' } })),
-        add: () => { this.addToCart(p.name, size === 'attar' ? p.a : p.s, size === 'attar' ? '6 ml' : '30 ml', this.resolveImg('./assets/' + p.img + '.jpg')); this.setState({ added: i }); clearTimeout(this.addT); this.addT = setTimeout(() => this.setState({ added: -1 }), 1800); },
+        add: () => { this.addToCart(p.name, size === 'attar' ? p.a : p.s, size === 'attar' ? '6 ml' : '30 ml', './assets/' + p.img + '.jpg'); this.setState({ added: i }); clearTimeout(this.addT); this.addT = setTimeout(() => this.setState({ added: -1 }), 1800); },
       };
     });
 
@@ -884,7 +880,7 @@ class Component extends DCLogic {
     const loader = React.createElement('div', {
       'aria-hidden': true,
       style: { position: 'fixed', inset: 0, zIndex: 100, background: '#F5EFE6', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: st.loaded ? 0 : 1, visibility: st.loaded ? 'hidden' : 'visible', transition: 'opacity 500ms cubic-bezier(0.22,1,0.36,1), visibility 500ms', pointerEvents: 'none' },
-    }, React.createElement('img', { src: this.resolveImg('./assets/seal.png'), alt: '', style: { width: 56, height: 56, opacity: st.loaded ? 0 : 1, transition: 'opacity 400ms ease' } }));
+    }, React.createElement('img', { src: './assets/seal.png', alt: '', style: { width: 56, height: 56, opacity: st.loaded ? 0 : 1, transition: 'opacity 400ms ease' } }));
 
     return {
       ann: this.ANN.map((text, i) => ({ text, op: i === st.ann ? 1 : 0, hidden: i !== st.ann })),
@@ -907,7 +903,7 @@ class Component extends DCLogic {
       heroSlides: this.HERO.map((h, i) => ({ opVal: i === st.heroIdx ? 1 : 0, bgStyle: {
         position: 'absolute', inset: 0, backgroundSize: 'cover', backgroundPosition: '50% 58%',
         opacity: i === st.heroIdx ? 1 : 0, transition: 'opacity 500ms cubic-bezier(0.22,1,0.36,1)',
-        backgroundImage: 'url(' + this.resolveImg(h.img) + ')', transform: 'scale(1.08)',
+        backgroundImage: 'url(' + h.img + ')', transform: 'scale(1.08)',
       } })),
       pauseHero: () => { this.heroPaused = true; }, resumeHero: () => { this.heroPaused = false; },
       heroDots: this.HERO.map((_, i) => ({ label: 'Show ' + this.HERO[i].name, active: st.heroIdx === i, w: st.heroIdx === i ? '22px' : '6px', bg: st.heroIdx === i ? '#1E1B18' : 'rgba(30,27,24,0.25)', go: () => this.goHero(0, i) })),
@@ -916,8 +912,7 @@ class Component extends DCLogic {
       marqueeRef: el => { this.marqueeEl = el; },
       pauseMarquee: () => { this.marqueePaused = true; },
       resumeMarquee: () => { this.marqueePaused = false; },
-      bestsellers: this.P.slice(0, 6).map((p, i) => ({ name: p.name, img: this.resolveImg('./assets/' + p.img + '.jpg'), alt: p.name + ' bottle', price: this.fmt(p.a), delay: i * 50,
-        bestImgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', transform: 'scale(1.18)', mixBlendMode: 'multiply', transition: 'transform 700ms cubic-bezier(0.22,1,0.36,1)' } })),
+      bestsellers: this.P.map((p, i) => ({ name: p.name, img: './assets/' + p.img + '.jpg', alt: p.name + ' bottle', price: this.fmt(p.a), delay: i * 50 })),
       bestCardW: m ? '62vw' : t ? '32vw' : '260px',
       bestRef: el => { this.bestEl = el; },
       bestLeft: () => this.bestEl && this.bestEl.scrollBy({ left: -320, behavior: 'smooth' }),
@@ -960,7 +955,7 @@ class Component extends DCLogic {
       discoveryRef: el => { this.discoveryEl = el; },
       pauseDiscovery: () => { this.discoveryPaused = true; },
       resumeDiscovery: () => { this.discoveryPaused = false; },
-      addSet: () => { this.addToCart('Discovery set', 1200, '8 × 2 ml', this.resolveImg('./assets/degh.jpg')); this.setState({ setAdded: true }); setTimeout(() => this.setState({ setAdded: false }), 1800); },
+      addSet: () => { this.addToCart('Discovery set', 1200, '8 × 2 ml', './assets/degh.jpg'); this.setState({ setAdded: true }); setTimeout(() => this.setState({ setAdded: false }), 1800); },
       setLabel: st.setAdded ? 'Added to bag' : 'Add the set to bag',
       showReviews: this.props.showReviews ?? true,
       review: rv, revOp: st.revOp, revY: st.revOp ? '0' : '8px', revCount: '0' + (st.rev + 1) + ' / 0' + this.REV.length,

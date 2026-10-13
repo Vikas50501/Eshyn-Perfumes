@@ -213,14 +213,14 @@ input::placeholder{color:#6F675E}
 <section data-screen-label="05 Shop by family" style="padding:0 0 clamp(96px,10.5vw,152px)">
   <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(168,128,63,0.3);margin-bottom:32px">
-      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Shop by family</h2>
-      <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Four families · Eight scents</span>
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Shop by collection</h2>
+      <a href="./eshyn Collection.dc.html" style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">View all →</a>
     </div>
     <div onMouseEnter="{{ pauseMarquee }}" onMouseLeave="{{ resumeMarquee }}" style="overflow:hidden;margin:0 clamp(-20px,-2.22vw,-32px)">
       <div ref="{{ marqueeRef }}" style="display:flex;gap:24px;width:max-content;padding:0 clamp(20px,2.22vw,32px)">
         <sc-for list="{{ familiesLoop }}" as="f" hint-placeholder-count="8">
-          <a href="#collection" style="display:flex;flex-direction:column;gap:16px;flex:none;width:{{ famCardW }}">
-            <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:#E7DACA">
+          <a href="{{ f.href }}" style="display:flex;flex-direction:column;gap:16px;flex:none;width:{{ famCardW }}">
+            <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:{{ f.tint }}">
               <img src="{{ f.img }}" alt="{{ f.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale({{ f.scale }});transform-origin:{{ f.origin }};mix-blend-mode:multiply;transition:transform 900ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale({{ f.hoverScale }});transform-origin:{{ f.origin }}">
             </div>
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
@@ -386,7 +386,7 @@ input::placeholder{color:#6F675E}
 <!-- 11 Discovery set -->
 <section id="discovery" data-screen-label="11 Discovery set" style="padding:clamp(96px,10.5vw,152px) 0">
   <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:48px 24px;align-items:center">
-    <div data-reveal="up" onMouseEnter="{{ pauseDiscovery }}" onMouseLeave="{{ resumeDiscovery }}" style="grid-column:{{ discImg }};background:#E7DACA;padding:clamp(28px,3.6vw,52px) 0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)">
+    <div data-reveal="up" onMouseEnter="{{ pauseDiscovery }}" onMouseLeave="{{ resumeDiscovery }}" style="grid-column:{{ discImg }};min-width:0;max-width:100%;background:#E7DACA;padding:clamp(28px,3.6vw,52px) 0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)">
       <div ref="{{ discoveryRef }}" style="display:flex;gap:clamp(14px,1.6vw,22px);width:max-content">
         <sc-for list="{{ discoveryLoop }}" as="p" hint-placeholder-count="16">
           <div style="display:flex;flex-direction:column;gap:8px;flex:none;width:clamp(100px,9.5vw,150px)">
@@ -398,7 +398,7 @@ input::placeholder{color:#6F675E}
         </sc-for>
       </div>
     </div>
-    <div style="grid-column:{{ discText }};display:flex;flex-direction:column;gap:28px">
+    <div style="grid-column:{{ discText }};min-width:0;display:flex;flex-direction:column;gap:28px">
       <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">The discovery set</div>
       <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-0.01em">All eight, before you choose.</h2>
       <p data-reveal="up" data-delay="60" style="margin:0;color:#3D3732;text-wrap:pretty">A mini of every eshyn scent in one box. Wear each for a day, notice which one stays with you, then choose your bottle.</p>
@@ -801,7 +801,17 @@ class Component extends DCLogic {
       { name: 'Oriental & Resinous', scents: ['Nocturne', 'Oudh'], img: './assets/nocturne.jpg', origin: '48% 66%', scale: 3.4, alt: 'Label detail: night sky with crescent moon' },
       { name: 'Fresh & Herbal', scents: ['Lamiaceae', 'Khas'], img: './assets/lavender.jpg', origin: '62% 74%', scale: 3.4, alt: 'Label detail: lavender sprigs' },
     ].map((f, i) => ({ ...f, count: f.scents.length + ' scents', delay: i * 60, hoverScale: f.scale * 1.06 }));
-    const familiesLoop = fam.concat(fam);
+    const collections = [
+      { name: 'Earthy & Woody', count: '2 scents', img: './assets/degh.jpg', alt: 'Degh bottle', tint: '#DCCAB4' },
+      { name: 'Floral', count: '2 scents', img: './assets/rose.jpg', alt: 'Shatpatri bottle', tint: '#EAD3DF' },
+      { name: 'Oriental & Resinous', count: '2 scents', img: './assets/nocturne.jpg', alt: 'Nocturne bottle', tint: '#D3D4DE' },
+      { name: 'Fresh & Herbal', count: '2 scents', img: './assets/lavender.jpg', alt: 'Lamiaceae bottle', tint: '#DED6E8' },
+      { name: 'Attars', count: '8 scents', img: './assets/chandan.jpg', alt: 'Santalum Chandan attar', tint: '#E3D2BC' },
+      { name: 'Perfume sprays', count: '8 scents', img: './assets/khas.jpg', alt: 'Khas perfume spray', tint: '#D2E1E4' },
+      { name: 'Traditional', count: '1 scent', img: './assets/oudh.jpg', alt: 'Oudh bottle', tint: '#D6CFC6' },
+      { name: 'Discovery set', count: '8 minis', img: './assets/jasmine.jpg', alt: 'Jasmine bottle from the discovery set', tint: '#E4DDCC' },
+    ].map(c => ({ ...c, scale: 1.15, hoverScale: 1.24, origin: '50% 55%', href: './eshyn Collection.dc.html' }));
+    const familiesLoop = collections.concat(collections);
 
     const products = this.P.map((p, i) => {
       const size = st.sizes[i] || 'attar', h = st.hover === i;
@@ -890,7 +900,7 @@ class Component extends DCLogic {
       marqueeRef: el => { this.marqueeEl = el; },
       pauseMarquee: () => { this.marqueePaused = true; },
       resumeMarquee: () => { this.marqueePaused = false; },
-      bestsellers: this.P.slice(0, 6).map((p, i) => ({ name: p.name, img: './assets/' + p.img + '.jpg', alt: p.name + ' bottle', price: this.fmt(p.a), delay: i * 50 })),
+      bestsellers: this.P.map((p, i) => ({ name: p.name, img: './assets/' + p.img + '.jpg', alt: p.name + ' bottle', price: this.fmt(p.a), delay: i * 50 })),
       bestCardW: m ? '62vw' : t ? '32vw' : '260px',
       bestRef: el => { this.bestEl = el; },
       bestLeft: () => this.bestEl && this.bestEl.scrollBy({ left: -320, behavior: 'smooth' }),
