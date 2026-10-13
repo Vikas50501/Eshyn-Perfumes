@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="./assets/degh.jpg" data-resource-id="degh" />
+<meta name="ext-resource-dependency" content="./assets/lavender.jpg" data-resource-id="lavender" />
+<meta name="ext-resource-dependency" content="./assets/nocturne.jpg" data-resource-id="nocturne" />
+<meta name="ext-resource-dependency" content="./assets/oudh.jpg" data-resource-id="oudh" />
+<meta name="ext-resource-dependency" content="./assets/rose.jpg" data-resource-id="rose" />
+<meta name="ext-resource-dependency" content="./assets/chandan.jpg" data-resource-id="chandan" />
+<meta name="ext-resource-dependency" content="./assets/jasmine.jpg" data-resource-id="jasmine" />
+<meta name="ext-resource-dependency" content="./assets/khas.jpg" data-resource-id="khas" />
+<meta name="ext-resource-dependency" content="./assets/seal.png" data-resource-id="seal" />
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#F5EFE6">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#E7DACA"/>
+    <circle cx="600" cy="360" r="140" fill="#6B1E1E"/>
+    <text x="600" y="380" font-family="Georgia,serif" font-size="90" fill="#F5EFE6" text-anchor="middle">e</text>
+    <text x="600" y="560" font-family="Georgia,serif" font-size="56" fill="#1E1B18" text-anchor="middle">eshyn</text>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+<title>eshyn — Indian attars &amp; perfume sprays</title>
+<link rel="icon" href="./assets/seal.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&amp;family=Hanken+Grotesk:wght@300;400;500&amp;family=Tiro+Devanagari+Hindi&amp;display=swap">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;background:#F5EFE6;color:#1E1B18;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1E1B18;text-decoration:none}
+a:hover{color:#6B1E1E}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:1px solid #6B1E1E;outline-offset:4px}
+::selection{background:#6B1E1E;color:#F5EFE6}
+input::placeholder{color:#6F675E}
+[data-no-scrollbar]::-webkit-scrollbar{display:none}
+@keyframes eshynScrollCue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.01%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif;font-size:16.5px;line-height:1.6;color:#1E1B18;background:#F5EFE6;overflow-x:clip">
+
+<!-- 01 Announcement -->
+<div data-screen-label="01 Announcement" role="region" aria-label="Announcements" style="background:#6B1E1E;color:#F5EFE6;height:36px;position:relative;overflow:hidden">
+  <sc-for list="{{ ann }}" as="a" hint-placeholder-count="1">
+    <div aria-hidden="{{ a.hidden }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 20px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;text-align:center;opacity:{{ a.op }};transition:opacity 900ms cubic-bezier(0.22,1,0.36,1)">{{ a.text }}</div>
+  </sc-for>
+</div>
+
+<!-- 02 Header -->
+<header data-screen-label="02 Header" onMouseLeave="{{ closeMega }}" onKeyDown="{{ onHeaderKey }}" style="position:sticky;top:0;z-index:50;margin-bottom:-72px;background:{{ hdrBg }};border-bottom:1px solid {{ hdrBorder }};transition:background 600ms cubic-bezier(0.22,1,0.36,1),border-color 600ms cubic-bezier(0.22,1,0.36,1)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);height:72px;display:grid;grid-template-columns:{{ headerCols }};align-items:center;gap:24px">
+    <div style="display:flex;align-items:center;gap:16px">
+      <button aria-label="Open menu" onClick="{{ openDrawer }}" style="display:{{ burgerDisplay }};width:44px;height:44px;margin-left:-12px;align-items:center;justify-content:center">
+        <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M0 1h22M0 11h22"></path></svg>
+      </button>
+      <a href="#top" aria-label="eshyn home" style="display:flex;align-items:center;gap:10px">
+        <img src="./assets/seal.png" alt="" width="30" height="30" style="display:block;width:30px;height:30px">
+        <span style="font-family:'Gilda Display',serif;font-size:27px;line-height:1;letter-spacing:0.01em;color:#1E1B18;margin-top:-3px">eshyn</span>
+      </a>
+    </div>
+    <nav aria-label="Primary" style="display:{{ navDisplay }};gap:36px;align-items:center;font-size:11px;letter-spacing:0.18em;text-transform:uppercase">
+      <button aria-expanded="{{ mega }}" aria-controls="mega" onMouseEnter="{{ openMega }}" onFocus="{{ openMega }}" onClick="{{ toggleMega }}" style="height:72px;letter-spacing:0.18em;text-transform:uppercase;font-size:11px;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 calc(50% + 11px);background-size:{{ shopUnderline }};transition:background-size 500ms cubic-bezier(0.22,1,0.36,1)">Shop</button>
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="5">
+        <a href="{{ n.href }}" onMouseEnter="{{ closeMega }}" onFocus="{{ closeMega }}" style="padding:6px 0;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1),color 300ms" style-hover="background-size:100% 1px;color:#1E1B18">{{ n.label }}</a>
+      </sc-for>
+    </nav>
+    <div style="display:flex;justify-content:flex-end;align-items:center;gap:4px;margin-right:-10px">
+      <button aria-label="Search" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#1E1B18" stroke-width="1"><circle cx="7.5" cy="7.5" r="6.5"></circle><path d="M12.5 12.5L17 17"></path></svg>
+      </button>
+      <button aria-label="Account" style="width:44px;height:44px;display:{{ acctDisplay }};align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#1E1B18" stroke-width="1"><circle cx="9" cy="5.5" r="4.5"></circle><path d="M1 17.5c.8-4 4-6 8-6s7.2 2 8 6"></path></svg>
+      </button>
+      <button aria-label="Bag, {{ bag }} items" style="height:44px;padding:0 10px;display:flex;align-items:center;gap:8px">
+        <svg width="16" height="19" viewBox="0 0 16 19" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M.5 5.5h15v13H.5zM4.5 5.5V4a3.5 3.5 0 0 1 7 0v1.5"></path></svg>
+        <span style="font-size:11px;letter-spacing:0.12em;min-width:8px">{{ bag }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mega" style="position:absolute;left:0;right:0;top:72px;background:#F5EFE6;border-top:1px solid rgba(168,128,63,0.3);border-bottom:1px solid rgba(168,128,63,0.3);opacity:{{ megaOp }};visibility:{{ megaVis }};transform:translateY({{ megaY }});transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),transform 500ms cubic-bezier(0.22,1,0.36,1),visibility 500ms">
+    <div style="max-width:1440px;margin:0 auto;padding:48px clamp(20px,2.22vw,32px) 56px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px">
+      <div style="grid-column:1 / span 8;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+        <sc-for list="{{ families }}" as="f" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">{{ f.name }}</div>
+            <div style="height:1px;background:rgba(168,128,63,0.3)"></div>
+            <sc-for list="{{ f.scents }}" as="s" hint-placeholder-count="2">
+              <a href="#collection" onClick="{{ closeMega }}" style="font-family:'Gilda Display',serif;font-size:22px;line-height:1.2">{{ s }}</a>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="grid-column:1 / -1;display:flex;gap:32px;padding-top:24px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase">
+          <a href="#collection" onClick="{{ closeMega }}">All attars</a>
+          <a href="#collection" onClick="{{ closeMega }}">All perfume sprays</a>
+          <a href="#discovery" onClick="{{ closeMega }}">Discovery set</a>
+        </div>
+      </div>
+      <a href="#collection" onClick="{{ closeMega }}" style="grid-column:10 / span 3;display:flex;flex-direction:column;gap:12px">
+        <div style="aspect-ratio:4/5;background:#1F2547;overflow:hidden;position:relative">
+          <div style="position:absolute;inset:0;background:#E3D8CA"></div>
+          <img src="./assets/nocturne.jpg" alt="Nocturne perfume spray, square glass bottle with copper cap" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.15);mix-blend-mode:multiply">
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+          <span style="font-family:'Gilda Display',serif;font-size:20px">Nocturne</span>
+          <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Featured</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:80;background:#F5EFE6;opacity:{{ drawerOp }};visibility:{{ drawerVis }};transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),visibility 500ms;display:flex;flex-direction:column;padding:0 20px 32px">
+  <div style="height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(168,128,63,0.3)">
+    <span style="font-family:'Gilda Display',serif;font-size:27px">eshyn</span>
+    <button aria-label="Close menu" onClick="{{ closeDrawer }}" style="width:44px;height:44px;margin-right:-12px;display:flex;align-items:center;justify-content:center">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M1 1l14 14M15 1L1 15"></path></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile" style="display:flex;flex-direction:column;padding-top:32px">
+    <sc-for list="{{ drawerLinks }}" as="d" hint-placeholder-count="6">
+      <a href="{{ d.href }}" onClick="{{ closeDrawer }}" style="font-family:'Gilda Display',serif;font-size:40px;line-height:1.1;padding:12px 0;border-bottom:1px solid rgba(168,128,63,0.3);opacity:{{ d.op }};transform:translateY({{ d.y }});transition:opacity 700ms cubic-bezier(0.22,1,0.36,1) {{ d.delay }},transform 700ms cubic-bezier(0.22,1,0.36,1) {{ d.delay }}">{{ d.label }}</a>
+    </sc-for>
+  </nav>
+  <div style="margin-top:auto;display:flex;gap:24px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">
+    <a href="#" style="color:#6F675E">Account</a><a href="#" style="color:#6F675E">Instagram</a><span>Hand-blended in India</span>
+  </div>
+</div>
+
+<!-- 03 Hero -->
+<section id="top" data-screen-label="03 Hero" onMouseEnter="{{ pauseHero }}" onMouseLeave="{{ resumeHero }}" style="background:#E7DACA;position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:0 24px;min-height:{{ heroH }};align-items:end">
+    <div style="grid-column:{{ heroText }};grid-row:{{ heroTextRow }};padding:{{ heroTextPad }};display:flex;flex-direction:column;gap:28px;position:relative;z-index:2;opacity:{{ heroOp }};transform:translateY({{ heroY }});transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),transform 500ms cubic-bezier(0.22,1,0.36,1)">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#5E564E">{{ hero.eyebrow }}</div>
+      <h1 style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(52px,6.67vw,96px);line-height:0.98;letter-spacing:-0.015em;text-wrap:balance">{{ hero.headline }}</h1>
+      <p style="margin:0;max-width:30em;color:#3D3732;text-wrap:pretty">{{ hero.body }}</p>
+      <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+        <a href="{{ hero.href }}" style="display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(30,27,24,0.25);background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 700ms cubic-bezier(0.22,1,0.36,1),color 400ms,transform 400ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 1px;color:#6B1E1E;transform:translateX(4px)">{{ hero.cta }} <span aria-hidden="true">→</span></a>
+        <div role="tablist" aria-label="Featured scents" style="display:flex;gap:8px">
+          <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="3">
+            <button role="tab" aria-selected="{{ d.active }}" aria-label="{{ d.label }}" onClick="{{ d.go }}" style="width:{{ d.w }};height:6px;border-radius:3px;background:{{ d.bg }};transition:all 400ms cubic-bezier(0.22,1,0.36,1)"></button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="clip" data-delay="450" style="grid-column:{{ heroImg }};grid-row:{{ heroImgRow }};align-self:stretch;position:relative;min-height:{{ heroImgMin }};overflow:hidden">
+      <sc-for list="{{ heroSlides }}" as="hs" hint-placeholder-count="3">
+        <div style="{{ hs.bgStyle }}"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;background:#E7DACA;mix-blend-mode:multiply;opacity:{{ hs.opVal }};transition:opacity 500ms cubic-bezier(0.22,1,0.36,1)"></div>
+      </sc-for>
+      <div style="position:absolute;right:0;bottom:28px;display:flex;align-items:baseline;gap:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#5E564E;opacity:{{ heroOp }};transition:opacity 500ms cubic-bezier(0.22,1,0.36,1)">
+        <span>{{ hero.name }}</span><span style="font-family:'Tiro Devanagari Hindi',serif;font-size:14px;letter-spacing:0;text-transform:none">{{ hero.hi }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03b Trust strip -->
+<section data-screen-label="03b Trust strip" style="background:#1E1B18">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(40px,4.5vw,56px) clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ trustCols }};gap:28px 0">
+    <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="4">
+      <div data-reveal="up" data-delay="{{ tr.delay }}" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:4px 24px;border-left:{{ tr.border }}">
+        <div style="width:52px;height:52px;border-radius:50%;border:1px solid rgba(231,218,202,0.35);display:flex;align-items:center;justify-content:center;transition:border-color 400ms,transform 400ms" style-hover="border-color:#E7DACA;transform:scale(1.06)">
+          <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="#E7DACA" stroke-width="1.15">{{ tr.icon }}</svg>
+        </div>
+        <span style="font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;color:#F0E6D8;max-width:14em;line-height:1.5">{{ tr.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- 04 Brand statement -->
+<section data-screen-label="04 Brand statement" style="padding:clamp(96px,10.5vw,152px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:32px 24px">
+    <div data-reveal="up" style="grid-column:{{ stSeal }};display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+      <img src="./assets/seal.png" alt="eshyn seal" width="56" height="56" style="width:56px;height:56px;opacity:0.9">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">The house</div>
+    </div>
+    <div style="grid-column:{{ stText }};display:flex;flex-direction:column;gap:40px">
+      <p ref="{{ statementRef }}" style="margin:0;font-family:'Gilda Display',serif;font-size:clamp(28px,3.05vw,44px);line-height:1.22;letter-spacing:-0.005em;text-wrap:pretty">
+        <sc-for list="{{ statementWords }}" as="w" hint-placeholder-count="50">
+          <span style="color:#C9BFAF;transition:color 120ms linear">{{ w.t }}</span>
+        </sc-for>
+      </p>
+      <div data-reveal="up" data-delay="120">
+        <a href="#craft" style="display:inline-flex;gap:12px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(30,27,24,0.25);background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 700ms cubic-bezier(0.22,1,0.36,1),color 400ms" style-hover="background-size:100% 1px;color:#6B1E1E">Our craft <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05a Bestsellers slider -->
+<section data-screen-label="05a Bestsellers" style="padding:0 0 clamp(96px,10.5vw,152px)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(168,128,63,0.3);margin-bottom:32px">
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Loved most</h2>
+      <div style="display:flex;gap:10px">
+        <button aria-label="Scroll bestsellers left" onClick="{{ bestLeft }}" style="width:40px;height:40px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">←</button>
+        <button aria-label="Scroll bestsellers right" onClick="{{ bestRight }}" style="width:40px;height:40px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">→</button>
+      </div>
+    </div>
+    <div ref="{{ bestRef }}" data-no-scrollbar="" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px">
+      <sc-for list="{{ bestsellers }}" as="p" hint-placeholder-count="6">
+        <a href="#collection" data-reveal="card" data-delay="{{ p.delay }}" style="flex:none;width:{{ bestCardW }};scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+          <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:#F5EFE6">
+            <div style="{{ p.bestImgStyle }}">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+            <span style="font-family:'Gilda Display',serif;font-size:19px">{{ p.name }}</span>
+            <span style="font-size:13px;color:#6F675E">{{ p.price }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Shop by family -->
+<section data-screen-label="05 Shop by family" style="padding:0 0 clamp(96px,10.5vw,152px)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(168,128,63,0.3);margin-bottom:32px">
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Shop by family</h2>
+      <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Four families · Eight scents</span>
+    </div>
+    <div onMouseEnter="{{ pauseMarquee }}" onMouseLeave="{{ resumeMarquee }}" style="overflow:hidden;margin:0 clamp(-20px,-2.22vw,-32px)">
+      <div ref="{{ marqueeRef }}" style="display:flex;gap:24px;width:max-content;padding:0 clamp(20px,2.22vw,32px)">
+        <sc-for list="{{ familiesLoop }}" as="f" hint-placeholder-count="8">
+          <a href="#collection" style="display:flex;flex-direction:column;gap:16px;flex:none;width:{{ famCardW }}">
+            <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:#E7DACA">
+              <div style="{{ f.imgStyle }}">
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+              <span style="font-family:'Gilda Display',serif;font-size:22px;line-height:1.2">{{ f.name }}</span>
+              <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E;white-space:nowrap">{{ f.count }}</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Collection -->
+<section id="collection" data-screen-label="06 Collection" style="padding:clamp(96px,10.5vw,152px) 0;background:#EFE7DB">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
+    <div style="display:grid;grid-template-columns:{{ g12 }};gap:24px;align-items:end;margin-bottom:56px">
+      <div style="grid-column:{{ colHead }};display:flex;flex-direction:column;gap:20px">
+        <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">The collection</div>
+        <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-0.01em">Eight scents, two ways to wear them.</h2>
+      </div>
+      <p data-reveal="up" data-delay="60" style="grid-column:{{ colIntro }};margin:0;color:#4A443E;text-wrap:pretty">Each comes as a pure attar oil, worn close to the skin, or as a perfume spray for every day.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ prodCols }};gap:56px 24px">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+        <article data-reveal="card" data-delay="{{ p.delay }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="display:flex;flex-direction:column;gap:18px;transform:translateY({{ p.liftY }});transition:transform 500ms cubic-bezier(0.22,1,0.36,1)">
+          <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#F5EFE6">
+            <div style="position:absolute;inset:0;background:{{ p.tintBg }};transition:background 700ms cubic-bezier(0.22,1,0.36,1)"></div>
+            <a href="#" aria-label="{{ p.name }}" style="position:absolute;inset:0;display:block">
+              <div style="{{ p.colImgStyle1 }}"></div>
+              <div style="{{ p.colImgStyle2 }}"></div>
+            </a>
+            <button onClick="{{ p.add }}" style="position:absolute;left:12px;right:12px;bottom:12px;height:44px;background:#F5EFE6;border:1px solid rgba(30,27,24,0.15);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:{{ p.addOp }};transform:translateY({{ p.addY }});transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),transform 500ms cubic-bezier(0.22,1,0.36,1),background-size 500ms cubic-bezier(0.22,1,0.36,1),color 300ms;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:100% 0%" style-hover="background-size:100% 100%;color:#F5EFE6">{{ p.addLabel }}</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+              <a href="#" style="font-family:'Gilda Display',serif;font-size:22px;line-height:1.15">{{ p.name }}</a>
+              <span style="font-family:'Tiro Devanagari Hindi',serif;font-size:15px;color:#6F675E">{{ p.hi }}</span>
+              <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">{{ p.kind }}</span>
+            </div>
+            <div style="font-size:14px;color:#4A443E">{{ p.notes }}</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;border-top:1px solid rgba(168,128,63,0.3)">
+            <div role="group" aria-label="Format" style="display:flex;gap:16px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase">
+              <button aria-pressed="{{ p.isAttar }}" onClick="{{ p.setAttar }}" style="padding:8px 0;letter-spacing:0.18em;text-transform:uppercase;font-size:11px;color:{{ p.attarColor }};border-bottom:1px solid {{ p.attarLine }};transition:color 300ms,border-color 300ms">Attar</button>
+              <button aria-pressed="{{ p.isSpray }}" onClick="{{ p.setSpray }}" style="padding:8px 0;letter-spacing:0.18em;text-transform:uppercase;font-size:11px;color:{{ p.sprayColor }};border-bottom:1px solid {{ p.sprayLine }};transition:color 300ms,border-color 300ms">Spray</button>
+            </div>
+            <div style="font-size:14px;white-space:nowrap"><span style="color:#6F675E">{{ p.size }}</span>  {{ p.price }}</div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 07 Featured story -->
+<section data-screen-label="07 Featured story" style="padding:clamp(96px,10.5vw,152px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:48px 24px;align-items:center">
+    <div style="grid-column:{{ storyImg }};position:relative;padding:{{ storyPad }}">
+      <div aria-hidden="true" style="position:absolute;inset:0 15% 0 0;background:#6B1E1E;opacity:0.07;z-index:0;display:{{ storyWmDisplay }}"></div>
+      <div aria-hidden="true" style="position:absolute;right:-8px;bottom:-24px;font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(140px,16vw,240px);line-height:1;color:#6B1E1E;opacity:0.07;z-index:0;pointer-events:none;display:{{ storyWmDisplay }}">मिट्टी</div>
+      <div style="position:relative;z-index:1;aspect-ratio:3/4;max-width:{{ storyImgMax }};margin-left:auto;margin-right:{{ storyImgMr }};overflow:hidden;background:#DCCAB4">
+        <div data-reveal="img" style="position:absolute;inset:0;background:#DCCAB4">
+          <img src="./assets/degh.jpg" alt="Degh perfume spray on a warm sand-coloured ground" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.25);transform-origin:50% 62%;mix-blend-mode:multiply">
+        </div>
+        <div style="position:absolute;left:0;bottom:0;background:#1E1B18;color:#F5EFE6;padding:12px 20px;display:flex;align-items:baseline;gap:10px;z-index:2">
+          <span style="font-family:'Gilda Display',serif;font-size:17px">Degh</span>
+          <span style="font-family:'Tiro Devanagari Hindi',serif;font-size:13px;color:#E7DACA">मिट्टी</span>
+        </div>
+      </div>
+    </div>
+    <div style="grid-column:{{ storyText }};display:flex;flex-direction:column;gap:32px">
+      <div data-reveal="up" style="display:flex;gap:12px;align-items:baseline;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">
+        <span>The story of Degh</span><span style="font-family:'Tiro Devanagari Hindi',serif;font-size:15px;letter-spacing:0;text-transform:none">मिट्टी</span>
+      </div>
+      <h2 data-reveal="up" data-delay="60" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-0.01em">The scent of first rain</h2>
+      <p data-reveal="up" data-delay="120" style="margin:0;color:#3D3732;text-wrap:pretty">Before the monsoon breaks, the air over a dry field changes. The soil gives up something it has held all summer — warm, mineral, faintly green. Degh is our attempt to keep that moment. It takes its name from the copper vessel of traditional attar making, and its character from the earth itself.</p>
+      <dl data-reveal="up" data-delay="180" style="margin:0;display:grid;grid-template-columns:96px 1fr;border-top:1px solid rgba(168,128,63,0.3)">
+        <sc-for list="{{ pyramid }}" as="n" hint-placeholder-count="3">
+          <dt style="padding:16px 0;border-bottom:1px solid rgba(168,128,63,0.3);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E;line-height:26px">{{ n.tier }}</dt>
+          <dd style="margin:0;padding:16px 0;border-bottom:1px solid rgba(168,128,63,0.3);font-family:'Gilda Display',serif;font-size:21px;line-height:26px">{{ n.notes }}</dd>
+        </sc-for>
+      </dl>
+      <div data-reveal="up" data-delay="240">
+        <a href="#collection" style="display:inline-flex;gap:12px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(30,27,24,0.25);background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 700ms cubic-bezier(0.22,1,0.36,1),color 400ms" style-hover="background-size:100% 1px;color:#6B1E1E">Explore Degh <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Attar vs spray -->
+<section data-screen-label="08 Attar vs spray" style="padding:clamp(96px,10.5vw,152px) 0;background:#E7DACA">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:48px 24px">
+    <div style="grid-column:{{ cmpHead }};display:flex;flex-direction:column;gap:24px">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#5E564E">A first-timer’s guide</div>
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-0.01em">Attar or spray?</h2>
+      <p data-reveal="up" data-delay="60" style="margin:0;color:#3D3732;max-width:26em;text-wrap:pretty">The same eight scents, two ways of wearing them. If attar is new to you, this is the difference.</p>
+    </div>
+    <div style="grid-column:{{ cmpTable }}" data-reveal="up" data-delay="100">
+      <div style="display:grid;grid-template-columns:{{ cmpCols }};gap:0 24px;padding-bottom:14px;border-bottom:1px solid #1E1B18">
+        <span></span>
+        <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#1E1B18">Attar</span>
+        <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#1E1B18">Perfume spray</span>
+      </div>
+      <sc-for list="{{ compare }}" as="r" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:{{ r.cols }};gap:6px 24px;padding:20px 0;border-bottom:1px solid rgba(168,128,63,0.35);transition:background-color 300ms" style-hover="background-color:rgba(30,27,24,0.03)">
+          <span style="grid-column:{{ r.labelCol }};font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#6F675E;line-height:24px">{{ r.k }}</span>
+          <span style="font-size:15px;line-height:1.6;color:#3D3732;text-wrap:pretty">{{ r.a }}</span>
+          <span style="font-size:15px;line-height:1.6;color:#3D3732;text-wrap:pretty">{{ r.s }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Craft -->
+<section id="craft" data-screen-label="09 Craft" style="padding:clamp(96px,10.5vw,152px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
+    <div style="display:grid;grid-template-columns:{{ g12 }};gap:24px;align-items:end;margin-bottom:56px">
+      <div style="grid-column:{{ colHead }};display:flex;flex-direction:column;gap:20px">
+        <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Our craft</div>
+        <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-0.01em">Slow, small, by hand.</h2>
+      </div>
+      <p data-reveal="up" data-delay="60" style="grid-column:{{ colIntro }};margin:0;color:#4A443E;text-wrap:pretty">Three stages between a plant and a bottle. None of them can be hurried.</p>
+    </div>
+    <div ref="{{ craftLineRef2 }}" style="display:{{ craftLineDisplay }};position:relative;height:1px;background:rgba(168,128,63,0.3);margin-bottom:56px">
+      <div ref="{{ craftLineRef }}" style="position:absolute;left:0;top:-1px;height:3px;width:0%;background:#6B1E1E;transition:width 60ms linear"></div>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:{{ craftCols }};gap:48px 24px">
+      <sc-for list="{{ craft }}" as="c" hint-placeholder-count="3">
+        <li onClick="{{ c.select }}" data-reveal="card" data-delay="{{ c.delay }}" style="display:flex;flex-direction:column;gap:20px;margin-top:{{ c.offset }};cursor:pointer;transform:scale({{ c.scale }}) translateY(0);transition:transform 450ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale({{ c.scale }}) translateY(-6px)">
+          <div style="aspect-ratio:4/5;position:relative;background:#E7DACA;border:1px solid {{ c.imgBorder }};overflow:hidden;transition:border-color 450ms">
+            <div style="position:absolute;inset:0;transition:transform 600ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale(1.05)">
+              <image-slot id="{{ c.slot }}" shape="rect" placeholder="{{ c.ph }}"></image-slot>
+            </div>
+            <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(transparent,rgba(30,27,24,0.55));color:#F5EFE6;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:opacity 400ms cubic-bezier(0.22,1,0.36,1),transform 400ms cubic-bezier(0.22,1,0.36,1);pointer-events:none" style-hover="opacity:1;transform:translateY(0)">Step {{ c.n }} — {{ c.title }}</div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:center;padding-top:4px">
+            <span style="width:40px;height:40px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:0.04em;background:{{ c.circleBg }};color:{{ c.circleColor }};border:1px solid {{ c.circleBorderC }};transition:all 400ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale(1.12)">{{ c.n }}</span>
+            <span style="font-family:'Gilda Display',serif;font-size:28px;line-height:1.1;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 1px">{{ c.title }}</span>
+          </div>
+          <p style="margin:0;font-size:15.5px;color:#4A443E;max-width:24em;text-wrap:pretty">{{ c.body }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<!-- 10 Scent finder -->
+<section data-screen-label="10 Scent finder" style="background:#6B1E1E;color:#F5EFE6;padding:clamp(80px,8.3vw,120px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:40px 24px;align-items:end">
+    <div style="grid-column:{{ finderHead }};display:flex;flex-direction:column;gap:24px">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#E7DACA">Scent finder · Mood → Hour → Notes</div>
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5.6vw,80px);line-height:1;letter-spacing:-0.01em;color:#F5EFE6">Not sure where to begin?</h2>
+    </div>
+    <div style="grid-column:{{ finderCta }};display:flex;flex-direction:column;gap:28px;align-items:flex-start">
+      <p data-reveal="up" data-delay="60" style="margin:0;color:#F0E6D8;text-wrap:pretty">Three questions — your mood, the hour, the notes you love — and we’ll suggest two scents to start with.</p>
+      <a href="#" data-reveal="up" data-delay="120" style="display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 28px;border:1px solid #F5EFE6;color:#F5EFE6;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;background-image:linear-gradient(#F5EFE6,#F5EFE6);background-repeat:no-repeat;background-position:0 100%;background-size:100% 0%;transition:background-size 600ms cubic-bezier(0.22,1,0.36,1),color 400ms" style-hover="background-size:100% 100%;color:#6B1E1E">Find your scent <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 11 Discovery set -->
+<section id="discovery" data-screen-label="11 Discovery set" style="padding:clamp(96px,10.5vw,152px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ g12 }};gap:48px 24px;align-items:center">
+    <div data-reveal="up" onMouseEnter="{{ pauseDiscovery }}" onMouseLeave="{{ resumeDiscovery }}" style="grid-column:{{ discImg }};background:#E7DACA;padding:clamp(28px,3.6vw,52px) 0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)">
+      <div ref="{{ discoveryRef }}" style="display:flex;gap:clamp(14px,1.6vw,22px);width:max-content">
+        <sc-for list="{{ discoveryLoop }}" as="p" hint-placeholder-count="16">
+          <div style="display:flex;flex-direction:column;gap:8px;flex:none;width:clamp(100px,9.5vw,150px)">
+            <div style="aspect-ratio:3/4;overflow:hidden;position:relative;background:{{ p.tintBg2 }}">
+              <div style="{{ p.miniImgStyle }}">
+            </div>
+            <span style="height:2px;background:{{ p.tint }};opacity:0.6"></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="grid-column:{{ discText }};display:flex;flex-direction:column;gap:28px">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">The discovery set</div>
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:-0.01em">All eight, before you choose.</h2>
+      <p data-reveal="up" data-delay="60" style="margin:0;color:#3D3732;text-wrap:pretty">A mini of every eshyn scent in one box. Wear each for a day, notice which one stays with you, then choose your bottle.</p>
+      <div data-reveal="up" data-delay="120" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid rgba(168,128,63,0.3);border-bottom:1px solid rgba(168,128,63,0.3)">
+        <span style="font-size:14px;color:#4A443E">8 × 2 ml attars</span>
+        <span style="font-family:'Gilda Display',serif;font-size:24px">₹1,200</span>
+      </div>
+      <button data-reveal="up" data-delay="180" onClick="{{ addSet }}" style="align-self:flex-start;height:52px;padding:0 32px;background:#6B1E1E;color:#F5EFE6;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:100% 0%;transition:background-size 600ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 100%">{{ setLabel }}</button>
+    </div>
+  </div>
+</section>
+
+<!-- 12 Reviews -->
+<sc-if value="{{ showReviews }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="12 Reviews" aria-roledescription="carousel" aria-label="Customer reviews" style="padding:clamp(56px,6vw,84px) 0;background:#E7DACA">
+  <div style="max-width:680px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
+    <div data-reveal="up" style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">In their words</div>
+    <blockquote style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(21px,2.3vw,28px);line-height:1.35;letter-spacing:-0.005em;text-wrap:pretty;min-height:84px;opacity:{{ revOp }};transform:translateY({{ revY }});transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),transform 500ms cubic-bezier(0.22,1,0.36,1)">“{{ review.q }}”</blockquote>
+    <figcaption style="display:flex;align-items:baseline;gap:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:{{ revOp }};transition:opacity 500ms cubic-bezier(0.22,1,0.36,1)">
+      <span style="color:#1E1B18">{{ review.name }}</span><span style="color:#A8803F">·</span><span style="color:#6F675E">{{ review.scent }}</span>
+    </figcaption>
+    <div style="display:flex;align-items:center;gap:16px">
+      <button aria-label="Previous review" onClick="{{ prevRev }}" style="width:36px;height:36px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">←</button>
+      <span style="font-size:11px;letter-spacing:0.18em;color:#6F675E">{{ revCount }}</span>
+      <button aria-label="Next review" onClick="{{ nextRev }}" style="width:36px;height:36px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">→</button>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- 13 Journal -->
+<section id="journal" data-screen-label="13 Journal" style="padding:clamp(96px,10.5vw,152px) 0;background:#EFE7DB">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(168,128,63,0.3);margin-bottom:40px">
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Journal</h2>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a href="#journal" style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 0;background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 600ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 1px">All entries →</a>
+        <div style="display:flex;gap:10px">
+          <button aria-label="Scroll journal left" onClick="{{ journalLeft }}" style="width:40px;height:40px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">←</button>
+          <button aria-label="Scroll journal right" onClick="{{ journalRight }}" style="width:40px;height:40px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">→</button>
+        </div>
+      </div>
+    </div>
+    <div ref="{{ journalRef }}" data-no-scrollbar="" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px">
+      <sc-for list="{{ journal }}" as="j" hint-placeholder-count="3">
+        <article data-reveal="card" data-delay="{{ j.delay }}" style="flex:none;width:{{ journalCardW }};scroll-snap-align:start;display:flex;flex-direction:column;gap:18px">
+          <div style="aspect-ratio:3/2;position:relative;background:#E7DACA">
+            <image-slot id="{{ j.slot }}" shape="rect" placeholder="{{ j.ph }}"></image-slot>
+          </div>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">{{ j.cat }}</div>
+          <a href="#" style="font-family:'Gilda Display',serif;font-size:clamp(24px,2.2vw,30px);line-height:1.15;text-wrap:balance">{{ j.title }}</a>
+          <p style="margin:0;font-size:15.5px;color:#4A443E;text-wrap:pretty">{{ j.dek }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 13b FAQ -->
+<section id="faq" data-screen-label="13b FAQ" style="padding:clamp(96px,10.5vw,152px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(168,128,63,0.3);margin-bottom:40px">
+      <h2 data-reveal="up" style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(28px,2.5vw,36px);line-height:1.1">Before you order.</h2>
+      <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Questions</span>
+    </div>
+    <div style="max-width:800px;margin:0 auto">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <div data-reveal="up" data-delay="{{ q.delay }}" style="border-bottom:1px solid rgba(168,128,63,0.3)">
+          <button aria-expanded="{{ q.open }}" onClick="{{ q.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;text-align:left">
+            <span style="font-family:'Gilda Display',serif;font-size:clamp(19px,1.8vw,24px);line-height:1.25">{{ q.q }}</span>
+            <span aria-hidden="true" style="flex:none;font-size:20px;line-height:1;transform:rotate({{ q.rot }});transition:transform 400ms cubic-bezier(0.22,1,0.36,1)">+</span>
+          </button>
+          <div style="overflow:hidden;max-height:{{ q.maxH }};transition:max-height 450ms cubic-bezier(0.22,1,0.36,1)">
+            <p style="margin:0 0 24px;max-width:38em;color:#4A443E;font-size:15.5px;text-wrap:pretty">{{ q.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 14 Newsletter -->
+<section data-screen-label="14 Newsletter" style="padding:clamp(40px,4.2vw,60px) 0;background:#E7DACA">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px">
+    <div data-reveal="up" style="display:flex;align-items:center;gap:18px;flex:1 1 320px">
+      <img src="./assets/seal.png" alt="" width="36" height="36" style="width:36px;height:36px;opacity:0.85;flex:none">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <h2 style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(22px,2.2vw,28px);line-height:1.2;text-wrap:balance">Letters on scent, seasons and new blends.</h2>
+        <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5E564E">A few times a year, never more</span>
+      </div>
+    </div>
+    <form data-reveal="up" data-delay="60" onSubmit="{{ subscribe }}" style="display:flex;align-items:center;gap:16px;border-bottom:1px solid #1E1B18;flex:1 1 320px;max-width:440px">
+      <label for="nl-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>
+      <input id="nl-email" type="email" required="" placeholder="Your email address" value="{{ email }}" onChange="{{ setEmail }}" style="flex:1;min-width:0;height:48px;border:0;background:transparent;font:inherit;font-size:16px;color:#1E1B18;outline:none">
+      <button type="submit" style="height:48px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap" style-hover="color:#6B1E1E">{{ nlLabel }}</button>
+    </form>
+  </div>
+</section>
+
+<!-- 15 Footer -->
+<footer data-screen-label="15 Footer" style="background:#1E1B18;color:#E7DACA;padding:clamp(72px,7.5vw,108px) 0 32px">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:flex;flex-direction:column;gap:64px">
+    <div style="display:grid;grid-template-columns:{{ footCols }};gap:40px 24px">
+      <sc-for list="{{ footer }}" as="col" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#A8A097;margin-bottom:6px">{{ col.h }}</div>
+          <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+            <a href="#" style="color:#F5EFE6;font-size:15px;line-height:1.4" style-hover="color:#E7DACA">{{ l }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-family:'Gilda Display',serif;font-size:clamp(120px,22vw,320px);line-height:0.8;letter-spacing:-0.03em;color:#F5EFE6;margin-left:-0.04em" aria-hidden="true">eshyn</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding-top:24px;border-top:1px solid rgba(168,128,63,0.3);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#A8A097">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="./assets/seal.png" alt="" width="22" height="22" style="width:22px;height:22px">
+        <span>Product of India · © 2026 eshyn</span>
+      </div>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="color:#E7DACA">Instagram</a><a href="#" style="color:#E7DACA">Pinterest</a><a href="#" style="color:#E7DACA">YouTube</a>
+      </div>
+      <div aria-label="Accepted payments" style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ payments }}" as="pm" hint-placeholder-count="5">
+          <span style="border:1px solid rgba(231,218,202,0.35);padding:4px 8px;font-size:10px;letter-spacing:0.12em;color:#E7DACA">{{ pm }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{{ loader }}
+
+<sc-if value="{{ popupOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Welcome offer" style="position:fixed;inset:0;z-index:110;background:rgba(30,27,24,0.55);display:flex;align-items:center;justify-content:center;padding:20px" onClick="{{ closePopup }}">
+    <div onClick="{{ stop }}" style="background:#F5EFE6;max-width:440px;width:100%;padding:clamp(32px,4vw,48px);position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px">
+      <button aria-label="Close" onClick="{{ closePopup }}" style="position:absolute;top:16px;right:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M1 1l14 14M15 1L1 15"></path></svg>
+      </button>
+      <img src="./assets/seal.png" alt="" width="40" height="40" style="width:40px;height:40px;opacity:0.85">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Welcome to eshyn</div>
+      <h2 style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.15">Get 10% off your first order</h2>
+      <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;color:#4A7A4A;font-size:14.5px">Thank you — your code WELCOME10 is on its way to your inbox.</p>
+      </sc-if>
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitForm }}" style="width:100%;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;color:#4A443E;font-size:14px">Share your details and we'll send the code to your inbox.</p>
+          <input type="text" required="" placeholder="Your name" value="{{ formName }}" onChange="{{ setFormName }}" style="height:46px;padding:0 14px;border:1px solid rgba(30,27,24,0.2);background:transparent;font:inherit;font-size:14px;color:#1E1B18;outline:none">
+          <input type="tel" required="" placeholder="Phone number" value="{{ formPhone }}" onChange="{{ setFormPhone }}" style="height:46px;padding:0 14px;border:1px solid rgba(30,27,24,0.2);background:transparent;font:inherit;font-size:14px;color:#1E1B18;outline:none">
+          <input type="email" placeholder="Email address (optional)" value="{{ formEmail }}" onChange="{{ setFormEmail }}" style="height:46px;padding:0 14px;border:1px solid rgba(30,27,24,0.2);background:transparent;font:inherit;font-size:14px;color:#1E1B18;outline:none">
+          <label style="display:flex;align-items:flex-start;gap:8px;text-align:left;font-size:12.5px;color:#4A443E;cursor:pointer">
+            <input type="checkbox" required="" checked="{{ formAgreed }}" onChange="{{ setFormAgreed }}" style="margin-top:3px">
+            <span>I agree to the <a href="#" style="color:#6B1E1E">Terms &amp; Conditions</a> and Privacy Policy.</span>
+          </label>
+          <button type="submit" style="height:48px;background:#1E1B18;color:#F5EFE6;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-top:4px">Get my code</button>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<div aria-hidden="{{ cartOverlayHidden }}" onClick="{{ closeCart }}" style="position:fixed;inset:0;z-index:119;background:rgba(30,27,24,0.45);opacity:{{ cartOverlayOp }};visibility:{{ cartVis }};transition:opacity 400ms cubic-bezier(0.22,1,0.36,1),visibility 400ms"></div>
+<div role="dialog" aria-modal="true" aria-label="Your bag" style="position:fixed;top:0;right:0;bottom:0;z-index:120;width:min(420px,100%);background:#F5EFE6;box-shadow:-12px 0 40px rgba(30,27,24,0.18);transform:translateX({{ cartX }});transition:transform 450ms cubic-bezier(0.22,1,0.36,1);display:flex;flex-direction:column">
+  <div style="height:76px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(168,128,63,0.3)">
+    <span style="font-family:'Gilda Display',serif;font-size:24px;display:flex;align-items:baseline;gap:8px">Your bag <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;color:#6F675E">({{ bag }})</span></span>
+    <button aria-label="Close bag" onClick="{{ closeCart }}" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background 300ms" style-hover="background:rgba(30,27,24,0.06)">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M1 1l14 14M15 1L1 15"></path></svg>
+    </button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:8px 24px;display:flex;flex-direction:column">
+    <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px 0;text-align:center">
+        <img src="./assets/seal.png" alt="" width="36" height="36" style="width:36px;height:36px;opacity:0.4">
+        <span style="color:#6F675E;font-size:14px">Your bag is empty.</span>
+      </div>
+    </sc-if>
+    <sc-for list="{{ cartItems }}" as="ci" hint-placeholder-count="0">
+      <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid rgba(168,128,63,0.25)">
+        <div style="width:68px;height:84px;flex:none;background-color:#EFE7DB;background-size:cover;background-position:center" style="{{ ci.imgStyle }}"></div>
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:'Gilda Display',serif;font-size:18px;line-height:1.2">{{ ci.name }}</span>
+          <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#6F675E">{{ ci.meta }}</span>
+          <span style="font-size:14.5px;margin-top:2px">{{ ci.price }}</span>
+          <div style="display:flex;align-items:center;border:1px solid rgba(30,27,24,0.2);width:fit-content;margin-top:4px">
+            <button aria-label="Decrease quantity" onClick="{{ ci.dec }}" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px">−</button>
+            <span style="width:26px;text-align:center;font-size:13px">{{ ci.qty }}</span>
+            <button aria-label="Increase quantity" onClick="{{ ci.inc }}" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px">+</button>
+          </div>
+        </div>
+        <button aria-label="Remove {{ ci.name }}" onClick="{{ ci.remove }}" style="flex:none;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A8279;align-self:flex-start;padding:4px" style-hover="color:#6B1E1E">Remove</button>
+      </div>
+    </sc-for>
+  </div>
+  <div style="flex:none;padding:20px 24px 24px;border-top:1px solid rgba(168,128,63,0.3);display:flex;flex-direction:column;gap:14px;background:#EFE7DB">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:12px;color:#4A443E">{{ shipMsg }}</span>
+      <div style="position:relative;height:3px;background:rgba(30,27,24,0.12);margin-top:14px">
+        <div style="position:absolute;left:0;top:0;height:100%;width:{{ shipProgress }}%;background:#6B1E1E;transition:width 500ms cubic-bezier(0.22,1,0.36,1)"></div>
+        <div style="position:absolute;top:50%;left:{{ shipProgress }}%;transform:translate(-50%,-50%);transition:left 500ms cubic-bezier(0.22,1,0.36,1)">
+          <svg width="26" height="18" viewBox="0 0 26 18" fill="none">
+            <rect x="0.5" y="4.5" width="14" height="9" fill="#F5EFE6" stroke="#1E1B18"></rect>
+            <path d="M14.5 7.5h6l4 4v2h-10z" fill="#F5EFE6" stroke="#1E1B18"></path>
+            <circle cx="6" cy="15" r="2" fill="#1E1B18"></circle>
+            <circle cx="19" cy="15" r="2" fill="#1E1B18"></circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline">
+      <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6F675E">Subtotal</span>
+      <span style="font-family:'Gilda Display',serif;font-size:22px">{{ cartSubtotal }}</span>
+    </div>
+    <a href="#collection" onClick="{{ closeCart }}" style="height:52px;display:flex;align-items:center;justify-content:center;background:#1E1B18;color:#F5EFE6;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:100% 0%;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 100%">Checkout</a>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showReviews&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, scrolled: false, ann: 0, mega: false, drawer: false, sizes: {}, hover: -1, added: -1, bag: 0, rev: 0, revOp: 1, email: '', subscribed: false, setAdded: false, loaded: false, faqOpen: 0, craftActive: 0, heroIdx: 0, heroOp: 1, cartOpen: false, cartItems: [], popupOpen: false, formName: '', formPhone: '', formEmail: '', formAgreed: false, formSubmitted: false };
+
+  HERO = [
+    { eyebrow: 'Attars & perfume sprays · Hand-blended in India', headline: 'Scents remembered, not made.', body: 'Eight Indian botanicals — earth after rain, temple sandalwood, mogra at dusk — blended slowly, the way attar has always been made.', cta: 'Meet the eight scents', href: '#collection', img: './assets/degh.jpg', alt: 'Degh perfume spray: a square faceted glass bottle with a polished copper cap', name: 'Degh', hi: 'मिट्टी', accent: '#6B1E1E', glow: '#C7A35A', notes: ['Petrichor', 'Vetiver', 'Clay'] },
+    { eyebrow: 'Oudh · Traditional', headline: 'Smoke, resin, and patience.', body: 'Agarwood aged slow and resin warmed by time — Oudh is the scent of ceremony, worn the way it has been for centuries.', cta: 'Explore Oudh', href: '#collection', img: './assets/oudh.jpg', alt: 'Oudh perfume spray: a square faceted glass bottle with a polished copper cap', name: 'Oudh', hi: '', accent: '#1E1B18', glow: '#8C7B66', notes: ['Agarwood', 'Smoke', 'Resin'] },
+    { eyebrow: 'Shatpatri · शतपत्री', headline: 'A rose remembered in monsoon.', body: 'Rose, petal and honey, blended the way grandmothers once distilled flowers by hand.', cta: 'Explore Shatpatri', href: '#collection', img: './assets/rose.jpg', alt: 'Shatpatri perfume spray: a square faceted glass bottle with a polished copper cap', name: 'Shatpatri', hi: 'शतपत्री', accent: '#B5579E', glow: '#E3B4D2', notes: ['Rose', 'Petal', 'Honey'] },
+  ];
+
+  ANN = ['Complimentary shipping across India above ₹1,500', 'Hand-blended in India, in small batches', 'The discovery set — all eight scents, to wear before you choose'];
+  P = [
+    { name: 'Degh', hi: 'मिट्टी', notes: 'Petrichor · Vetiver · Clay', tint: '#6B1E1E', img: 'degh', a: 1250, s: 1650 },
+    { name: 'Lamiaceae', hi: '', notes: 'Lavender · Clary sage · Dry hay', tint: '#9C86C4', img: 'lavender', a: 1250, s: 1650 },
+    { name: 'Nocturne', hi: '', notes: 'Night blooms · Amber · Musk', tint: '#1F2547', img: 'nocturne', a: 1350, s: 1750 },
+    { name: 'Oudh', hi: '', kind: 'Traditional', notes: 'Agarwood · Smoke · Resin', tint: '#1E1B18', img: 'oudh', a: 1850, s: 2250 },
+    { name: 'Shatpatri', hi: 'शतपत्री', notes: 'Rose · Petal · Honey', tint: '#B5579E', img: 'rose', a: 1350, s: 1750 },
+    { name: 'Santalum Chandan', hi: 'चंदन', notes: 'Sandalwood · Cream · Cardamom', tint: '#B07A45', img: 'chandan', a: 1450, s: 1850 },
+    { name: 'Jasmine', hi: 'मोगरा', notes: 'Mogra · Green stem · Tea', tint: '#8C7B66', img: 'jasmine', a: 1350, s: 1750 },
+    { name: 'Khas', hi: 'खस', notes: 'Vetiver root · Wet earth · Mint', tint: '#5E9AAB', img: 'khas', a: 1250, s: 1650 },
+  ];
+  REV = [
+    { q: 'A verified customer review appears here, quoted exactly as written', name: 'Customer name', scent: 'Scent purchased' },
+    { q: 'Reviews are pulled only from confirmed orders — never written by us', name: 'Customer name', scent: 'Scent purchased' },
+    { q: 'Keep each quote short: one sentence about how the scent wears', name: 'Customer name', scent: 'Scent purchased' },
+  ];
+
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    this.onS = () => { const s = window.scrollY > 24; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('resize', this.onR);
+    window.addEventListener('scroll', this.onS, { passive: true });
+    this.annT = setInterval(() => this.setState(s => ({ ann: (s.ann + 1) % this.ANN.length })), 4800);
+    this.loadT = setTimeout(() => this.setState({ loaded: true }), 600);
+    this.revT = setTimeout(() => this.setupReveal(), 30);
+    this.heroT = setInterval(() => { if (!this.heroPaused) this.goHero(1); }, 6500);
+    const today = new Date().toDateString();
+    if (localStorage.getItem('eshyn_popup_date') !== today) {
+      this.popupT = setTimeout(() => { this.setState({ popupOpen: true }); localStorage.setItem('eshyn_popup_date', today); }, 10000);
+    }
+    this.reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.setupLenis();
+    this.onScrollStatement = () => { if (this.rafSt) return; this.rafSt = requestAnimationFrame(() => { this.updateStatementScroll(); this.rafSt = null; }); };
+    window.addEventListener('scroll', this.onScrollStatement, { passive: true });
+    window.addEventListener('resize', this.onScrollStatement);
+    setTimeout(() => this.updateStatementScroll(), 60);
+    this.startMarquee();
+    this.onScrollCraft = () => { if (this.rafCr) return; this.rafCr = requestAnimationFrame(() => { this.updateCraftLine(); this.rafCr = null; }); };
+    window.addEventListener('scroll', this.onScrollCraft, { passive: true });
+    window.addEventListener('resize', this.onScrollCraft);
+    setTimeout(() => this.updateCraftLine(), 60);
+  }
+  updateCraftLine() {
+    if (!this.craftLineEl || !this.craftLineWrap) return;
+    const rect = this.craftLineWrap.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const start = vh * 0.9, end = vh * 0.35;
+    let progress = (start - rect.top) / (start - end);
+    progress = Math.max(0, Math.min(1, progress));
+    this.craftLineEl.style.width = (progress * 100) + '%';
+  }
+  startMarquee() {
+    this.runMarquee('marquee', 36);
+    this.runMarquee('discovery', 26);
+  }
+  runMarquee(name, speed) {
+    this[name + 'Offset'] = 0;
+    let last = performance.now();
+    const step = now => {
+      const dt = (now - last) / 1000; last = now;
+      const el = this[name + 'El'];
+      if (el && !this[name + 'Paused'] && !this.reduceMotion) {
+        this[name + 'Offset'] += speed * dt;
+        const half = el.scrollWidth / 2;
+        if (half > 0 && this[name + 'Offset'] >= half) this[name + 'Offset'] -= half;
+        el.style.transform = 'translateX(' + (-this[name + 'Offset']) + 'px)';
+      }
+      this[name + 'Raf'] = requestAnimationFrame(step);
+    };
+    this[name + 'Raf'] = requestAnimationFrame(step);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onR);
+    window.removeEventListener('scroll', this.onS);
+    window.removeEventListener('scroll', this.onScrollStatement);
+    window.removeEventListener('resize', this.onScrollStatement);
+    clearInterval(this.annT); clearInterval(this.lt); clearTimeout(this.loadT); clearTimeout(this.revT); clearInterval(this.heroT); clearTimeout(this.popupT);
+    if (this.io) this.io.disconnect();
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.rafSt) cancelAnimationFrame(this.rafSt);
+    if (this.marqueeRaf) cancelAnimationFrame(this.marqueeRaf);
+    if (this.discoveryRaf) cancelAnimationFrame(this.discoveryRaf);
+    if (this.rafCr) cancelAnimationFrame(this.rafCr);
+    window.removeEventListener('scroll', this.onScrollCraft);
+    window.removeEventListener('resize', this.onScrollCraft);
+    if (this.lenis) this.lenis.destroy();
+  }
+  updateStatementScroll() {
+    if (!this.statementEl) return;
+    const spans = this.statementEl.children;
+    if (this.reduceMotion) { for (let i = 0; i < spans.length; i++) spans[i].style.color = '#1E1B18'; return; }
+    const rect = this.statementEl.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const start = vh * 0.88, end = vh * 0.32;
+    let progress = (start - rect.top) / (start - end);
+    progress = Math.max(0, Math.min(1, progress));
+    const lit = Math.round(progress * spans.length);
+    for (let i = 0; i < spans.length; i++) spans[i].style.color = i < lit ? '#1E1B18' : '#C9BFAF';
+  }
+  setupReveal() {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const E = 'cubic-bezier(0.22, 1, 0.36, 1)';
+    this.io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.__rv && en.target.__rv.play(); this.io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.__rv) return;
+      const t = el.getAttribute('data-reveal'), d = +el.getAttribute('data-delay') || 0;
+      const fade = [{ opacity: 0 }, { opacity: 1 }];
+      const kf = reduce ? fade
+        : t === 'img' ? [{ transform: 'scale(1.06)' }, { transform: 'scale(1)' }]
+        : t === 'clip' ? [{ clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0 0 0 0)' }]
+        : t === 'card' ? [{ opacity: 0, transform: 'translateY(36px) scale(0.95)' }, { opacity: 1, transform: 'none' }]
+        : [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }];
+      if (reduce && t === 'img') return;
+      el.__rv = el.animate(kf, { duration: t === 'img' ? 1600 : t === 'clip' ? 1100 : t === 'card' ? 850 : 900, delay: d, easing: E, fill: 'both' });
+      el.__rv.pause();
+      this.io.observe(el);
+    });
+  }
+  setupLenis() {
+    if (matchMedia('(hover: none)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const go = () => {
+      if (!window.Lenis || this.lenis) return !!this.lenis;
+      this.lenis = new window.Lenis({ duration: 1.1, easing: t => 1 - Math.pow(1 - t, 4), anchors: { offset: -72 } });
+      const raf = time => { this.lenis.raf(time); this.raf = requestAnimationFrame(raf); };
+      this.raf = requestAnimationFrame(raf);
+      return true;
+    };
+    if (!go()) { this.lt = setInterval(() => { if (go()) clearInterval(this.lt); }, 200); setTimeout(() => clearInterval(this.lt), 6000); }
+  }
+  fmt(n) { return '₹' + n.toLocaleString('en-IN'); }
+  resolveImg(path) {
+    const m = /assets\/([\w-]+)\.(jpg|png)$/.exec(path || '');
+    if (m && typeof window !== 'undefined' && window.__resources && window.__resources[m[1]]) return window.__resources[m[1]];
+    return path;
+  }
+  addToCart(name, priceNum, meta, img) {
+    this.setState(s => {
+      const idx = s.cartItems.findIndex(c => c.name === name && c.meta === meta);
+      let items;
+      if (idx > -1) { items = [...s.cartItems]; items[idx] = { ...items[idx], qty: items[idx].qty + 1 }; }
+      else items = [...s.cartItems, { name, priceNum, meta, img, qty: 1 }];
+      return { bag: s.bag + 1, cartItems: items, cartOpen: true };
+    });
+  }
+  changeQty(name, meta, delta) {
+    this.setState(s => {
+      const items = s.cartItems.map(c => c.name === name && c.meta === meta ? { ...c, qty: Math.max(1, c.qty + delta) } : c);
+      return { cartItems: items, bag: Math.max(0, s.bag + delta) };
+    });
+  }
+  removeFromCart(name, meta) {
+    this.setState(s => {
+      const item = s.cartItems.find(c => c.name === name && c.meta === meta);
+      return { cartItems: s.cartItems.filter(c => !(c.name === name && c.meta === meta)), bag: Math.max(0, s.bag - (item ? item.qty : 0)) };
+    });
+  }
+  removeFromCart(i) {
+    this.setState(s => ({ bag: Math.max(0, s.bag - 1), cartItems: s.cartItems.filter((_, idx) => idx !== i) }));
+  }
+  goRev(dir) {
+    this.setState({ revOp: 0 });
+    setTimeout(() => this.setState(s => ({ rev: (s.rev + dir + this.REV.length) % this.REV.length, revOp: 1 })), 450);
+  }
+  goHero(dir, to) {
+    this.setState({ heroOp: 0 });
+    setTimeout(() => this.setState(s => ({ heroIdx: to !== undefined ? to : (s.heroIdx + dir + this.HERO.length) % this.HERO.length, heroOp: 1 })), 450);
+  }
+
+  renderVals() {
+    const st = this.state, w = st.w, m = w < 768, t = w < 1024;
+    const sp = (desk, mob) => (m ? (mob || '1 / -1') : desk);
+    const ivory = st.scrolled || st.mega || st.drawer;
+    const fam = [
+      { name: 'Earthy & Woody', scents: ['Degh', 'Santalum Chandan'], img: this.resolveImg('./assets/degh.jpg'), origin: '50% 76%', scale: 3.4, alt: 'Label detail: a water drop over dry, cracked earth' },
+      { name: 'Floral', scents: ['Shatpatri', 'Jasmine'], img: this.resolveImg('./assets/rose.jpg'), origin: '48% 76%', scale: 3.2, alt: 'Label detail: a soft pink rose' },
+      { name: 'Oriental & Resinous', scents: ['Nocturne', 'Oudh'], img: this.resolveImg('./assets/nocturne.jpg'), origin: '48% 66%', scale: 3.4, alt: 'Label detail: night sky with crescent moon' },
+      { name: 'Fresh & Herbal', scents: ['Lamiaceae', 'Khas'], img: this.resolveImg('./assets/lavender.jpg'), origin: '62% 74%', scale: 3.4, alt: 'Label detail: lavender sprigs' },
+    ].map((f, i) => ({ ...f, count: f.scents.length + ' scents', delay: i * 60, hoverScale: f.scale * 1.06,
+      imgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + f.img + ')', backgroundSize: 'cover', backgroundPosition: f.origin, transform: 'scale(' + f.scale + ')', transformOrigin: f.origin, mixBlendMode: 'multiply', transition: 'transform 900ms cubic-bezier(0.22,1,0.36,1)' } }));
+    const familiesLoop = fam.concat(fam);
+
+    const products = this.P.map((p, i) => {
+      const size = st.sizes[i] || 'attar', h = st.hover === i;
+      const active = '#1E1B18', idle = '#8A8279';
+      return {
+        name: p.name, hi: p.hi, kind: p.kind || '', notes: p.notes,
+        img: this.resolveImg('./assets/' + p.img + '.jpg'),
+        alt: p.name + ' — square faceted glass bottle with copper cap',
+        miniAlt: p.name + ' mini',
+        delay: (i % 4) * 60,
+        tintBg: h ? p.tint + '1F' : 'transparent', tintBg2: p.tint + '12', tint: p.tint,
+        baseOp: h ? 0 : 1, detOp: h ? 1 : 0, detScale: h ? 2.7 : 2.9,
+        colImgStyle1: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', transform: 'scale(1.18)', mixBlendMode: 'multiply', opacity: h ? 0 : 1, transition: 'opacity 800ms cubic-bezier(0.22,1,0.36,1)' },
+        colImgStyle2: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', backgroundPosition: '50.5% 69%', transform: 'scale(' + (h ? 2.7 : 2.9) + ')', mixBlendMode: 'multiply', opacity: h ? 1 : 0, transition: 'opacity 800ms cubic-bezier(0.22,1,0.36,1), transform 1400ms cubic-bezier(0.22,1,0.36,1)' },
+        miniImgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', backgroundPosition: '50% 55%', transform: 'scale(1.55)', mixBlendMode: 'multiply' },
+        addOp: m || h ? 1 : 0, addY: m || h ? '0' : '8px', liftY: h ? '-5px' : '0',
+        addLabel: st.added === i ? 'Added to bag' : 'Add to bag',
+        isAttar: size === 'attar', isSpray: size === 'spray',
+        attarColor: size === 'attar' ? active : idle, sprayColor: size === 'spray' ? active : idle,
+        attarLine: size === 'attar' ? active : 'transparent', sprayLine: size === 'spray' ? active : 'transparent',
+        size: size === 'attar' ? '6 ml' : '30 ml',
+        price: this.fmt(size === 'attar' ? p.a : p.s),
+        enter: () => this.setState({ hover: i }), leave: () => this.setState({ hover: -1 }),
+        setAttar: () => this.setState(s => ({ sizes: { ...s.sizes, [i]: 'attar' } })),
+        setSpray: () => this.setState(s => ({ sizes: { ...s.sizes, [i]: 'spray' } })),
+        add: () => { this.addToCart(p.name, size === 'attar' ? p.a : p.s, size === 'attar' ? '6 ml' : '30 ml', this.resolveImg('./assets/' + p.img + '.jpg')); this.setState({ added: i }); clearTimeout(this.addT); this.addT = setTimeout(() => this.setState({ added: -1 }), 1800); },
+      };
+    });
+
+    const nav = [['Attars', '#collection'], ['Perfumes', '#collection'], ['Discovery Set', '#discovery'], ['Our Craft', '#craft'], ['Journal', '#journal']];
+    const drawerItems = [['Shop', '#collection'], ...nav];
+    const cmp = [
+      ['Base', 'Pure plant oil, no alcohol', 'Alcohol, for a lighter, airier lift'],
+      ['How it wears', 'Close to the skin; warms and deepens with you', 'Carries further and opens quickly'],
+      ['Longevity', 'Usually lasts longer on skin', 'Brighter at first, softer sooner'],
+      ['How to apply', 'Touch the applicator to wrists and behind the ears', 'One or two sprays from a hand’s length away'],
+      ['Choose it if', 'You like scent as something personal', 'You want an easy everyday ritual'],
+      ['Size', '6 ml', '30 ml'],
+    ];
+    const rv = this.REV[st.rev];
+    const statementText = "The scents India remembers best were never made for a shelf. They lived in temple courtyards, in a dry field after the first rain, in a grandmother’s cupboard of chandan. We blend those botanicals slowly, in small batches, in the manner of the attar makers before us — then step aside, and let the scent remind you of something.";
+    const statementWords = statementText.split(' ').map(t => ({ t: t + ' ' }));
+    const faqData = [
+      { q: 'Is attar the same as perfume oil?', a: 'Attar is a concentrated, alcohol-free botanical oil, traditionally distilled. Our perfume sprays carry the same scent blend in an alcohol base for a lighter, everyday wear.' },
+      { q: 'How long will my order take to arrive?', a: 'Orders across India typically arrive within 3–5 working days of dispatch. You will receive a tracking link by email once your order ships.' },
+      { q: 'Can I return or exchange a scent?', a: 'Unopened bottles can be returned within 7 days of delivery. Because fragrance is personal, we recommend the discovery set first if you are new to a scent.' },
+      { q: 'How should I store my attar?', a: 'Keep it away from direct sunlight and heat, cap tightly after use. Stored this way, an attar keeps its character for years.' },
+      { q: 'Do you ship outside India?', a: 'Not yet — we currently ship only within India. We are working on international shipping and will announce it on the journal first.' },
+    ];
+    const trustData = [
+      { label: '100% natural botanicals', icon: React.createElement('path', { d: 'M10 2c3 3 6 6 6 10a6 6 0 1 1-12 0c0-4 3-7 6-10z' }) },
+      { label: 'Hand-blended in small batches', icon: React.createElement('path', { d: 'M3 10h14M10 3v14M5.5 5.5l9 9M14.5 5.5l-9 9' }) },
+      { label: 'Free shipping over ₹1,500', icon: React.createElement('path', { d: 'M1 5h11v9H1zM12 8h4l3 3v3h-7zM5 17.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM15.5 17.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' }) },
+      { label: '7-day easy returns', icon: React.createElement('path', { d: 'M3 10a7 7 0 1 1 2.1 5M3 10V5M3 10h5' }) },
+    ];
+
+    const loader = React.createElement('div', {
+      'aria-hidden': true,
+      style: { position: 'fixed', inset: 0, zIndex: 100, background: '#F5EFE6', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: st.loaded ? 0 : 1, visibility: st.loaded ? 'hidden' : 'visible', transition: 'opacity 500ms cubic-bezier(0.22,1,0.36,1), visibility 500ms', pointerEvents: 'none' },
+    }, React.createElement('img', { src: this.resolveImg('./assets/seal.png'), alt: '', style: { width: 56, height: 56, opacity: st.loaded ? 0 : 1, transition: 'opacity 400ms ease' } }));
+
+    return {
+      ann: this.ANN.map((text, i) => ({ text, op: i === st.ann ? 1 : 0, hidden: i !== st.ann })),
+      hdrBg: ivory ? '#F5EFE6' : 'rgba(245,239,230,0)',
+      hdrBorder: ivory ? 'rgba(168,128,63,0.3)' : 'rgba(168,128,63,0)',
+      navDisplay: t ? 'none' : 'flex', burgerDisplay: t ? 'flex' : 'none', acctDisplay: m ? 'none' : 'flex',
+      headerCols: t ? '1fr auto' : '1fr auto 1fr',
+      navLinks: nav.map(([label, href]) => ({ label, href })),
+      mega: st.mega, shopUnderline: st.mega ? '100% 1px' : '0% 1px',
+      megaOp: st.mega && !t ? 1 : 0, megaVis: st.mega && !t ? 'visible' : 'hidden', megaY: st.mega ? '0' : '-6px',
+      openMega: () => this.setState({ mega: true }), closeMega: () => this.setState({ mega: false }),
+      toggleMega: () => this.setState(s => ({ mega: !s.mega })),
+      onHeaderKey: e => { if (e.key === 'Escape') this.setState({ mega: false }); },
+      drawerOp: st.drawer ? 1 : 0, drawerVis: st.drawer ? 'visible' : 'hidden',
+      drawerLinks: drawerItems.map(([label, href], i) => ({ label, href, op: st.drawer ? 1 : 0, y: st.drawer ? '0' : '16px', delay: st.drawer ? 120 + i * 60 + 'ms' : '0ms' })),
+      openDrawer: () => this.setState({ drawer: true }), closeDrawer: () => this.setState({ drawer: false }),
+      bag: st.bag,
+      hero: this.HERO[st.heroIdx], heroOp: st.heroOp, heroY: st.heroOp ? '0' : '6px',
+      scrollCueDisplay: m ? 'none' : 'flex',
+      heroSlides: this.HERO.map((h, i) => ({ opVal: i === st.heroIdx ? 1 : 0, bgStyle: {
+        position: 'absolute', inset: 0, backgroundSize: 'cover', backgroundPosition: '50% 58%',
+        opacity: i === st.heroIdx ? 1 : 0, transition: 'opacity 500ms cubic-bezier(0.22,1,0.36,1)',
+        backgroundImage: 'url(' + this.resolveImg(h.img) + ')', transform: 'scale(1.08)',
+      } })),
+      pauseHero: () => { this.heroPaused = true; }, resumeHero: () => { this.heroPaused = false; },
+      heroDots: this.HERO.map((_, i) => ({ label: 'Show ' + this.HERO[i].name, active: st.heroIdx === i, w: st.heroIdx === i ? '22px' : '6px', bg: st.heroIdx === i ? '#1E1B18' : 'rgba(30,27,24,0.25)', go: () => this.goHero(0, i) })),
+      families: fam,
+      familiesLoop, famCardW: m ? '68vw' : t ? '34vw' : '300px',
+      marqueeRef: el => { this.marqueeEl = el; },
+      pauseMarquee: () => { this.marqueePaused = true; },
+      resumeMarquee: () => { this.marqueePaused = false; },
+      bestsellers: this.P.slice(0, 6).map((p, i) => ({ name: p.name, img: this.resolveImg('./assets/' + p.img + '.jpg'), alt: p.name + ' bottle', price: this.fmt(p.a), delay: i * 50,
+        bestImgStyle: { position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundImage: 'url(' + this.resolveImg('./assets/' + p.img + '.jpg') + ')', backgroundSize: 'cover', transform: 'scale(1.18)', mixBlendMode: 'multiply', transition: 'transform 700ms cubic-bezier(0.22,1,0.36,1)' } })),
+      bestCardW: m ? '62vw' : t ? '32vw' : '260px',
+      bestRef: el => { this.bestEl = el; },
+      bestLeft: () => this.bestEl && this.bestEl.scrollBy({ left: -320, behavior: 'smooth' }),
+      bestRight: () => this.bestEl && this.bestEl.scrollBy({ left: 320, behavior: 'smooth' }),
+      g12: m ? 'repeat(4, minmax(0,1fr))' : 'repeat(12, minmax(0,1fr))',
+      heroH: m ? 'auto' : 'clamp(640px, calc(100vh - 36px), 940px)',
+      heroText: sp('1 / span 6'), heroTextRow: m ? '2' : '1', heroTextPad: m ? '8px 0 64px' : '160px 0 104px',
+      heroImg: sp('7 / span 6'), heroImgRow: '1', heroImgMin: m ? '440px' : '0',
+      stSeal: sp('1 / span 2'), stText: sp('3 / span 8'),
+      famCols: m ? 'repeat(2, minmax(0,1fr))' : 'repeat(4, minmax(0,1fr))',
+      colHead: sp(t ? '1 / span 7' : '1 / span 6'), colIntro: sp(t ? '9 / span 4' : '9 / span 4'),
+      prodCols: t ? 'repeat(2, minmax(0,1fr))' : 'repeat(4, minmax(0,1fr))',
+      products,
+      storyImg: sp('1 / span 7'), storyText: sp(t ? '8 / span 5' : '9 / span 4'),
+      storyPad: m ? '0' : 'clamp(16px,2vw,32px) 0',
+      storyImgMax: m ? '100%' : '72%', storyImgMr: m ? '0' : '14%',
+      storyWmDisplay: m ? 'none' : 'block',
+      pyramid: [{ tier: 'Top', notes: 'Rain-wet clay, green leaf' }, { tier: 'Heart', notes: 'Vetiver, warm earth' }, { tier: 'Base', notes: 'Sandalwood, soft musk' }],
+      cmpHead: sp(t ? '1 / span 4' : '1 / span 4'), cmpTable: sp('6 / span 7'),
+      cmpCols: m ? 'minmax(0,1fr) minmax(0,1fr)' : '140px minmax(0,1fr) minmax(0,1fr)',
+      compare: cmp.map(([k, a, s]) => ({ k, a, s, cols: m ? 'minmax(0,1fr) minmax(0,1fr)' : '140px minmax(0,1fr) minmax(0,1fr)', labelCol: m ? '1 / -1' : 'auto' })),
+      craftCols: m ? '1fr' : 'repeat(3, minmax(0,1fr))',
+      craftLineDisplay: m ? 'none' : 'block',
+      craftLineRef: el => { this.craftLineEl = el; if (el) this.updateCraftLine(); },
+      craftLineRef2: el => { this.craftLineWrap = el; },
+      craft: [
+        { n: '01', title: 'Sourcing', body: 'Botanicals gathered in their season — vetiver root, rose, mogra buds, sandalwood — from growers we know by name.', ph: 'Documentary photo: raw botanicals, hands sorting', slot: 'craft-1' },
+        { n: '02', title: 'Distilling', body: 'Plant material is distilled slowly and patiently, in the traditional way, so the scent keeps its depth.', ph: 'Documentary photo: copper still, steam', slot: 'craft-2' },
+        { n: '03', title: 'Ageing', body: 'Each blend rests before it is bottled, giving the notes time to settle into one another.', ph: 'Documentary photo: resting vessels', slot: 'craft-3' },
+      ].map((c, i) => {
+        const active = st.craftActive === i;
+        return { ...c, delay: i * 60, offset: m ? '0' : i * 48 + 'px', scale: active ? 1.03 : 1,
+          imgBorder: active ? '#1E1B18' : 'transparent',
+          circleBg: active ? '#1E1B18' : 'transparent', circleColor: active ? '#F5EFE6' : '#1E1B18', circleBorderC: active ? '#1E1B18' : 'rgba(30,27,24,0.3)',
+          select: () => this.setState({ craftActive: i }) };
+      }),
+      finderHead: sp('1 / span 7'), finderCta: sp('9 / span 4'),
+      discImg: sp('1 / span 7'), discText: sp(t ? '8 / span 5' : '9 / span 4'),
+      discoveryLoop: products.concat(products),
+      discoveryRef: el => { this.discoveryEl = el; },
+      pauseDiscovery: () => { this.discoveryPaused = true; },
+      resumeDiscovery: () => { this.discoveryPaused = false; },
+      addSet: () => { this.addToCart('Discovery set', 1200, '8 × 2 ml', this.resolveImg('./assets/degh.jpg')); this.setState({ setAdded: true }); setTimeout(() => this.setState({ setAdded: false }), 1800); },
+      setLabel: st.setAdded ? 'Added to bag' : 'Add the set to bag',
+      showReviews: this.props.showReviews ?? true,
+      review: rv, revOp: st.revOp, revY: st.revOp ? '0' : '8px', revCount: '0' + (st.rev + 1) + ' / 0' + this.REV.length,
+      prevRev: () => this.goRev(-1), nextRev: () => this.goRev(1),
+      journal: [
+        { cat: 'Ritual', title: 'How to wear attar', dek: 'Warmth, pulse points, and why a single touch is enough.', ph: 'Editorial: attar applicator on a wrist', slot: 'journal-1' },
+        { cat: 'Ingredients', title: 'The story of mogra', dek: 'The flower that opens after dusk, and the summers it belongs to.', ph: 'Editorial: strings of mogra buds', slot: 'journal-2' },
+        { cat: 'Layering', title: 'Layering oud with rose', dek: 'An old pairing, and how to make it your own.', ph: 'Editorial: oud chips and rose petals', slot: 'journal-3' },
+      ].map((j, i) => ({ ...j, delay: i * 60 })),
+      journalCardW: m ? '82vw' : t ? '46vw' : '31%',
+      journalRef: el => { this.journalEl = el; },
+      journalLeft: () => this.journalEl && this.journalEl.scrollBy({ left: -360, behavior: 'smooth' }),
+      journalRight: () => this.journalEl && this.journalEl.scrollBy({ left: 360, behavior: 'smooth' }),
+      nlHead: sp('1 / span 6'), nlForm: sp('8 / span 5'),
+      email: st.email, setEmail: e => this.setState({ email: e.target.value }),
+      subscribe: e => { e.preventDefault(); this.setState({ subscribed: true }); },
+      nlLabel: st.subscribed ? 'Thank you' : 'Subscribe →',
+      footCols: m ? 'repeat(2, minmax(0,1fr))' : 'repeat(4, minmax(0,1fr))',
+      footer: [
+        { h: 'Shop', links: ['Attars', 'Perfume sprays', 'Discovery set', 'Gift cards'] },
+        { h: 'House', links: ['Our craft', 'Journal', 'Scent finder', 'Contact'] },
+        { h: 'Care', links: ['Shipping', 'Returns', 'Caring for attar', 'FAQ'] },
+        { h: 'Legal', links: ['Terms', 'Privacy', 'Refund policy'] },
+      ],
+      statementWords, statementRef: el => { this.statementEl = el; if (el) this.updateStatementScroll(); },
+      payments: ['UPI', 'RuPay', 'Visa', 'Mastercard', 'Amex'],
+      trustCols: m ? 'repeat(2, minmax(0,1fr))' : 'repeat(4, minmax(0,1fr))',
+      trust: trustData.map((tr, i) => ({ ...tr, delay: i * 50, border: i % (m ? 2 : 4) !== 0 ? '1px solid rgba(231,218,202,0.18)' : 'none' })),
+      faqList: sp('6 / span 7'),
+      faqs: faqData.map((f, i) => ({
+        q: f.q, a: f.a, delay: i * 40, open: st.faqOpen === i,
+        rot: st.faqOpen === i ? '45deg' : '0deg', maxH: st.faqOpen === i ? '240px' : '0px',
+        toggle: () => this.setState(s => ({ faqOpen: s.faqOpen === i ? -1 : i })),
+      })),
+      loader,
+      popupOpen: st.popupOpen, closePopup: () => this.setState({ popupOpen: false }),
+      formName: st.formName, setFormName: e => this.setState({ formName: e.target.value }),
+      formEmail: st.formEmail, setFormEmail: e => this.setState({ formEmail: e.target.value }),
+      formPhone: st.formPhone, setFormPhone: e => this.setState({ formPhone: e.target.value }),
+      formAgreed: st.formAgreed, setFormAgreed: e => this.setState({ formAgreed: e.target.checked }),
+      formSubmitted: st.formSubmitted, showForm: !st.formSubmitted,
+      submitForm: e => { e.preventDefault(); if (!st.formAgreed) return; this.setState({ formSubmitted: true }); },
+      cartOpen: st.cartOpen, closeCart: () => this.setState({ cartOpen: false }),
+      cartItems: st.cartItems.map(ci => ({ ...ci, price: this.fmt(ci.priceNum * ci.qty),
+        imgStyle: { width: 68, height: 84, flex: 'none', overflow: 'hidden', backgroundColor: '#EFE7DB', backgroundSize: 'cover', backgroundPosition: 'center', ...(ci.img ? { backgroundImage: 'url(' + ci.img + ')', mixBlendMode: 'multiply' } : {}) },
+        inc: () => this.changeQty(ci.name, ci.meta, 1), dec: () => this.changeQty(ci.name, ci.meta, -1), remove: () => this.removeFromCart(ci.name, ci.meta) })),
+      cartEmpty: st.cartItems.length === 0,
+      shipProgress: Math.min(100, Math.round((st.cartItems.reduce((sum, c) => sum + c.priceNum * c.qty, 0) / 1500) * 100)),
+      shipMsg: (() => { const total = st.cartItems.reduce((sum, c) => sum + c.priceNum * c.qty, 0); return total >= 1500 ? 'You\'ve unlocked free delivery!' : 'Add ' + this.fmt(1500 - total) + ' more for free delivery'; })(),
+      cartSubtotal: this.fmt(st.cartItems.reduce((sum, ci) => sum + (parseInt(ci.price.replace(/[^\d]/g, ''), 10) || 0), 0)),
+      cartX: st.cartOpen ? '0' : '100%', cartVis: st.cartOpen ? 'visible' : 'hidden', cartOverlayOp: st.cartOpen ? 1 : 0, cartOverlayHidden: !st.cartOpen,
+      stop: e => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>

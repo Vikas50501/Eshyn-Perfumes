@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Degh — eshyn</title>
+<link rel="icon" href="./assets/seal.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gilda+Display&amp;family=Hanken+Grotesk:wght@300;400;500&amp;family=Tiro+Devanagari+Hindi&amp;display=swap">
+<style>
+html,body{margin:0;background:#F5EFE6;color:#1E1B18;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1E1B18;text-decoration:none}
+a:hover{color:#6B1E1E}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:1px solid #6B1E1E;outline-offset:4px}
+::selection{background:#6B1E1E;color:#F5EFE6}
+[data-no-scrollbar]::-webkit-scrollbar{display:none}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif;font-size:16.5px;line-height:1.6;color:#1E1B18;background:#F5EFE6;overflow-x:clip">
+
+<div data-screen-label="Announcement" role="region" aria-label="Announcements" style="background:#6B1E1E;color:#F5EFE6;height:36px;display:flex;align-items:center;justify-content:center;padding:0 20px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;text-align:center">Complimentary shipping across India above ₹1,500</div>
+
+<header data-screen-label="Header" style="position:sticky;top:0;z-index:50;background:#F5EFE6;border-bottom:1px solid rgba(168,128,63,0.3)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);height:72px;display:grid;grid-template-columns:{{ headerCols }};align-items:center;gap:24px">
+    <div style="display:flex;align-items:center;gap:16px">
+      <button aria-label="Open menu" onClick="{{ openDrawer }}" style="display:{{ burgerDisplay }};width:44px;height:44px;margin-left:-12px;align-items:center;justify-content:center">
+        <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M0 1h22M0 11h22"></path></svg>
+      </button>
+      <a href="./eshyn Home.dc.html" aria-label="eshyn home" style="display:flex;align-items:center;gap:10px">
+        <img src="./assets/seal.png" alt="" width="30" height="30" style="display:block;width:30px;height:30px">
+        <span style="font-family:'Gilda Display',serif;font-size:27px;line-height:1;letter-spacing:0.01em;color:#1E1B18;margin-top:-3px">eshyn</span>
+      </a>
+    </div>
+    <nav aria-label="Primary" style="display:{{ navDisplay }};gap:36px;align-items:center;font-size:11px;letter-spacing:0.18em;text-transform:uppercase">
+      <a href="./eshyn Collection.dc.html" style="padding:6px 0;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 1px">Shop</a>
+      <a href="./eshyn Home.dc.html#craft" style="padding:6px 0;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 1px">Our Craft</a>
+      <a href="./eshyn Home.dc.html#journal" style="padding:6px 0;background-image:linear-gradient(#1E1B18,#1E1B18);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 1px">Journal</a>
+    </nav>
+    <div style="display:flex;justify-content:flex-end;align-items:center;gap:4px;margin-right:-10px">
+      <button aria-label="Search" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#1E1B18" stroke-width="1"><circle cx="7.5" cy="7.5" r="6.5"></circle><path d="M12.5 12.5L17 17"></path></svg>
+      </button>
+      <button aria-label="Account" style="width:44px;height:44px;display:{{ acctDisplay }};align-items:center;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#1E1B18" stroke-width="1"><circle cx="9" cy="5.5" r="4.5"></circle><path d="M1 17.5c.8-4 4-6 8-6s7.2 2 8 6"></path></svg>
+      </button>
+      <button aria-label="Bag, {{ bag }} items" style="height:44px;padding:0 10px;display:flex;align-items:center;gap:8px">
+        <svg width="16" height="19" viewBox="0 0 16 19" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M.5 5.5h15v13H.5zM4.5 5.5V4a3.5 3.5 0 0 1 7 0v1.5"></path></svg>
+        <span style="font-size:11px;letter-spacing:0.12em;min-width:8px">{{ bag }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:80;background:#F5EFE6;opacity:{{ drawerOp }};visibility:{{ drawerVis }};transition:opacity 500ms cubic-bezier(0.22,1,0.36,1),visibility 500ms;display:flex;flex-direction:column;padding:0 20px 32px">
+  <div style="height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(168,128,63,0.3)">
+    <span style="font-family:'Gilda Display',serif;font-size:27px">eshyn</span>
+    <button aria-label="Close menu" onClick="{{ closeDrawer }}" style="width:44px;height:44px;margin-right:-12px;display:flex;align-items:center;justify-content:center">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M1 1l14 14M15 1L1 15"></path></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile" style="display:flex;flex-direction:column;padding-top:32px">
+    <a href="./eshyn Collection.dc.html" style="font-family:'Gilda Display',serif;font-size:36px;line-height:1.1;padding:12px 0;border-bottom:1px solid rgba(168,128,63,0.3)">Shop</a>
+    <a href="./eshyn Home.dc.html#craft" style="font-family:'Gilda Display',serif;font-size:36px;line-height:1.1;padding:12px 0;border-bottom:1px solid rgba(168,128,63,0.3)">Our Craft</a>
+    <a href="./eshyn Home.dc.html#journal" style="font-family:'Gilda Display',serif;font-size:36px;line-height:1.1;padding:12px 0;border-bottom:1px solid rgba(168,128,63,0.3)">Journal</a>
+  </nav>
+</div>
+
+<nav aria-label="Breadcrumb" style="max-width:1440px;margin:0 auto;padding:20px clamp(20px,2.22vw,32px) 0;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6F675E;display:flex;gap:8px;flex-wrap:wrap">
+  <a href="./eshyn Home.dc.html" style="color:#6F675E">Home</a><span>/</span><a href="./eshyn Collection.dc.html" style="color:#6F675E">Collection</a><span>/</span><span style="color:#1E1B18">{{ p.name }}</span>
+</nav>
+
+<section data-screen-label="Product" style="padding:32px 0 clamp(96px,10.5vw,152px)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ gridCols }};gap:48px 56px;align-items:start">
+
+    <div style="display:flex;flex-direction:column;gap:12px;position:{{ galleryPos }};top:96px">
+      <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:{{ p.tintBg }}">
+        <img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale({{ galleryScale }});transform-origin:{{ galleryOrigin }};mix-blend-mode:multiply;transition:transform 900ms cubic-bezier(0.22,1,0.36,1)">
+      </div>
+      <div style="display:flex;gap:10px">
+        <sc-for list="{{ thumbs }}" as="th" hint-placeholder-count="3">
+          <button aria-label="{{ th.label }}" onClick="{{ th.go }}" style="width:72px;height:90px;flex:none;overflow:hidden;position:relative;background:{{ p.tintBg }};border:1px solid {{ th.border }};transition:border-color 300ms">
+            <img src="{{ p.img }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale({{ th.scale }});transform-origin:{{ th.origin }};mix-blend-mode:multiply">
+          </button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:28px;max-width:520px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6F675E">{{ p.family }}{{ p.kindSuffix }}</div>
+        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <h1 style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(36px,4vw,52px);line-height:1.05;letter-spacing:-0.01em">{{ p.name }}</h1>
+          <span style="font-family:'Tiro Devanagari Hindi',serif;font-size:20px;color:#6F675E">{{ p.hi }}</span>
+        </div>
+        <div style="font-size:15px;color:#4A443E">{{ p.notes }}</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:4px;border-top:1px solid rgba(168,128,63,0.3)">
+        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:16px">
+          <span style="font-family:'Gilda Display',serif;font-size:32px">{{ p.price }}</span>
+          <span style="font-size:16px;color:#8A8279;text-decoration:line-through">{{ p.mrp }}</span>
+          <span style="font-size:12px;letter-spacing:0.04em;color:#6B1E1E">Save {{ p.discountPct }}%</span>
+        </div>
+        <span style="font-size:12.5px;color:#6F675E">Inclusive of all taxes · {{ p.size }}</span>
+      </div>
+
+      <sc-if value="{{ hasPyramid }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6F675E">Fragrance pyramid</div>
+          <div onMouseEnter="{{ pausePyr }}" onMouseLeave="{{ resumePyr }}" style="overflow:hidden">
+            <div ref="{{ pyrRef }}" style="display:flex;gap:16px;width:max-content">
+              <sc-for list="{{ pyramidLoop }}" as="n" hint-placeholder-count="6">
+                <div style="flex:none;width:170px;display:flex;flex-direction:column;align-items:center;gap:10px;border:1px solid rgba(168,128,63,0.3);padding:16px 14px;text-align:center">
+                  <div style="width:60px;height:60px">
+                    <image-slot id="{{ n.slot }}" shape="circle" placeholder="{{ n.ph }}" src="{{ n.img }}"></image-slot>
+                  </div>
+                  <span style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#6F675E">{{ n.tier }}</span>
+                  <span style="font-size:13px;line-height:1.4;color:#1E1B18">{{ n.notes }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6F675E">Format</div>
+        <div role="group" aria-label="Format" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <button aria-pressed="{{ p.isAttar }}" onClick="{{ p.setAttar }}" style="display:flex;flex-direction:column;gap:6px;text-align:left;padding:16px;border:1px solid {{ p.attarBorder }};background:transparent;transition:border-color 300ms">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="width:14px;height:14px;border-radius:50%;border:1px solid {{ p.attarDot }};display:flex;align-items:center;justify-content:center;flex:none">
+                <span style="width:7px;height:7px;border-radius:50%;background:{{ p.attarDot }};opacity:{{ p.isAttar }}"></span>
+              </span>
+              <span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase">Attar</span>
+            </div>
+            <span style="font-size:12px;color:#6F675E">6 ml · Close to the skin</span>
+            <span style="font-family:'Gilda Display',serif;font-size:18px">{{ p.attarPrice }}</span>
+          </button>
+          <button aria-pressed="{{ p.isSpray }}" onClick="{{ p.setSpray }}" style="display:flex;flex-direction:column;gap:6px;text-align:left;padding:16px;border:1px solid {{ p.sprayBorder }};background:transparent;transition:border-color 300ms">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="width:14px;height:14px;border-radius:50%;border:1px solid {{ p.sprayDot }};display:flex;align-items:center;justify-content:center;flex:none">
+                <span style="width:7px;height:7px;border-radius:50%;background:{{ p.sprayDot }};opacity:{{ p.isSpray }}"></span>
+              </span>
+              <span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase">Spray</span>
+            </div>
+            <span style="font-size:12px;color:#6F675E">30 ml · Everyday wear</span>
+            <span style="font-family:'Gilda Display',serif;font-size:18px">{{ p.sprayPrice }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div role="group" aria-label="Quantity" style="display:flex;align-items:center;border:1px solid rgba(30,27,24,0.2);align-self:flex-start">
+          <button aria-label="Decrease quantity" onClick="{{ decQty }}" style="width:44px;height:48px;display:flex;align-items:center;justify-content:center;font-size:16px">−</button>
+          <span style="width:36px;text-align:center;font-size:14px">{{ qty }}</span>
+          <button aria-label="Increase quantity" onClick="{{ incQty }}" style="width:44px;height:48px;display:flex;align-items:center;justify-content:center;font-size:16px">+</button>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ addToBag }}" style="flex:1;min-width:160px;height:54px;background:#1E1B18;color:#F5EFE6;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:100% 0%;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 100%">{{ addLabel }}</button>
+          <button onClick="{{ buyNow }}" style="flex:1;min-width:160px;height:54px;border:1px solid #6B1E1E;color:#6B1E1E;background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:100% 0%;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;transition:background-size 500ms cubic-bezier(0.22,1,0.36,1),color 300ms" style-hover="background-size:100% 100%;color:#F5EFE6">{{ buyLabel }}</button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#6F675E">Available offers</div>
+        <div onMouseEnter="{{ pauseOffers }}" onMouseLeave="{{ resumeOffers }}" style="overflow:hidden">
+          <div ref="{{ offersRef }}" style="display:flex;gap:12px;width:max-content">
+            <sc-for list="{{ offersLoop }}" as="of" hint-placeholder-count="4">
+              <div style="flex:none;width:250px;display:flex;flex-direction:column;gap:8px;border:1px solid rgba(168,128,63,0.3);padding:14px 16px">
+                <span style="font-size:13px;letter-spacing:0.06em;color:#1E1B18">{{ of.code }}</span>
+                <span style="font-size:12.5px;color:#6F675E">{{ of.desc }}</span>
+                <button onClick="{{ of.copy }}" style="align-self:flex-start;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6B1E1E">{{ of.label }}</button>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:18px 0;border-top:1px solid rgba(168,128,63,0.3);border-bottom:1px solid rgba(168,128,63,0.3)">
+        <sc-for list="{{ trustMini }}" as="tm" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:0 10px;border-left:{{ tm.border }}">
+            <div style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(107,30,30,0.3);display:flex;align-items:center;justify-content:center">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#6B1E1E" stroke-width="1.2">{{ tm.icon }}</svg>
+            </div>
+            <span style="font-size:11.5px;line-height:1.4;color:#4A443E">{{ tm.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ accordion }}" as="ac" hint-placeholder-count="3">
+          <div style="border-bottom:1px solid rgba(168,128,63,0.3)">
+            <button aria-expanded="{{ ac.open }}" onClick="{{ ac.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;text-align:left">
+              <span style="font-size:13px;letter-spacing:0.04em;text-transform:uppercase">{{ ac.title }}</span>
+              <span aria-hidden="true" style="font-size:18px;transform:rotate({{ ac.rot }});transition:transform 400ms cubic-bezier(0.22,1,0.36,1)">+</span>
+            </button>
+            <div style="overflow:hidden;max-height:{{ ac.maxH }};transition:max-height 450ms cubic-bezier(0.22,1,0.36,1)">
+              <p style="margin:0 0 20px;color:#4A443E;font-size:14.5px;text-wrap:pretty">{{ ac.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Reviews" aria-label="Customer reviews" style="padding:clamp(56px,6vw,84px) 0;background:#E7DACA">
+  <div style="max-width:680px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
+    <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">In their words</div>
+    <blockquote style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(21px,2.3vw,28px);line-height:1.35;letter-spacing:-0.005em;text-wrap:pretty;min-height:84px;opacity:{{ revOp }};transition:opacity 500ms cubic-bezier(0.22,1,0.36,1)">“{{ review.q }}”</blockquote>
+    <figcaption style="display:flex;align-items:baseline;gap:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:{{ revOp }};transition:opacity 500ms cubic-bezier(0.22,1,0.36,1)">
+      <span style="color:#1E1B18">{{ review.name }}</span><span style="color:#A8803F">·</span><span style="color:#6F675E">Verified buyer · {{ p.name }}</span>
+    </figcaption>
+    <div style="display:flex;align-items:center;gap:16px">
+      <button aria-label="Previous review" onClick="{{ prevRev }}" style="width:36px;height:36px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">←</button>
+      <span style="font-size:11px;letter-spacing:0.18em;color:#6F675E">{{ revCount }}</span>
+      <button aria-label="Next review" onClick="{{ nextRev }}" style="width:36px;height:36px;border:1px solid rgba(30,27,24,0.2);display:flex;align-items:center;justify-content:center;transition:border-color 300ms" style-hover="border-color:#6B1E1E">→</button>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Craft banner" style="padding:clamp(72px,8vw,112px) 0">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:grid;grid-template-columns:{{ craftBannerCols }};gap:40px 56px;align-items:center">
+    <div style="aspect-ratio:4/5;position:relative;background:#E7DACA">
+      <image-slot id="product-craft" shape="rect" placeholder="Documentary photo: distilling or sourcing botanicals"></image-slot>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Our craft</div>
+      <h2 style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(30px,3.2vw,42px);line-height:1.12;letter-spacing:-0.01em">Slow, small, by hand.</h2>
+      <p style="margin:0;color:#4A443E;max-width:30em;text-wrap:pretty">Every bottle of {{ p.name }} is blended in small batches, in the manner of the attar makers before us — nothing rushed, nothing synthetic.</p>
+      <a href="./eshyn Home.dc.html#craft" style="display:inline-flex;gap:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:8px 0;border-bottom:1px solid rgba(30,27,24,0.25);background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 600ms cubic-bezier(0.22,1,0.36,1),color 400ms" style-hover="background-size:100% 1px;color:#6B1E1E">See how it's made <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Related" style="padding:0 0 clamp(96px,10.5vw,152px)">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(168,128,63,0.3);margin-bottom:32px">
+      <h2 style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(26px,2.4vw,34px);line-height:1.1">You may also like</h2>
+      <a href="./eshyn Collection.dc.html" style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;padding:6px 0;background-image:linear-gradient(#6B1E1E,#6B1E1E);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size 600ms cubic-bezier(0.22,1,0.36,1)" style-hover="background-size:100% 1px">View all →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ relCols }};gap:24px">
+      <sc-for list="{{ related }}" as="r" hint-placeholder-count="4">
+        <a href="{{ r.href }}" style="display:flex;flex-direction:column;gap:14px">
+          <div style="aspect-ratio:4/5;overflow:hidden;position:relative;background:{{ r.tintBg }}">
+            <img src="{{ r.img }}" alt="{{ r.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);mix-blend-mode:multiply;transition:transform 700ms cubic-bezier(0.22,1,0.36,1)" style-hover="transform:scale(1.26)">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+            <span style="font-family:'Gilda Display',serif;font-size:19px">{{ r.name }}</span>
+            <span style="font-size:13px;color:#6F675E">{{ r.price }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Footer" style="background:#1E1B18;color:#E7DACA;padding:clamp(72px,7.5vw,108px) 0 32px">
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,2.22vw,32px);display:flex;flex-direction:column;gap:64px">
+    <div style="display:grid;grid-template-columns:{{ footCols }};gap:40px 24px">
+      <sc-for list="{{ footer }}" as="col" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#A8A097;margin-bottom:6px">{{ col.h }}</div>
+          <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.href }}" style="color:#F5EFE6;font-size:15px;line-height:1.4" style-hover="color:#E7DACA">{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-family:'Gilda Display',serif;font-size:clamp(120px,22vw,320px);line-height:0.8;letter-spacing:-0.03em;color:#F5EFE6;margin-left:-0.04em" aria-hidden="true">eshyn</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding-top:24px;border-top:1px solid rgba(168,128,63,0.3);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#A8A097">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="./assets/seal.png" alt="" width="22" height="22" style="width:22px;height:22px">
+        <span>Product of India · © 2026 eshyn</span>
+      </div>
+      <div style="display:flex;gap:20px">
+        <a href="#" style="color:#E7DACA">Instagram</a><a href="#" style="color:#E7DACA">Pinterest</a><a href="#" style="color:#E7DACA">YouTube</a>
+      </div>
+      <div aria-label="Accepted payments" style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ payments }}" as="pm" hint-placeholder-count="5">
+          <span style="border:1px solid rgba(231,218,202,0.35);padding:4px 8px;font-size:10px;letter-spacing:0.12em;color:#E7DACA">{{ pm }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ popupOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Welcome offer" style="position:fixed;inset:0;z-index:110;background:rgba(30,27,24,0.55);display:flex;align-items:center;justify-content:center;padding:20px" onClick="{{ closePopup }}">
+    <div onClick="{{ stop }}" style="background:#F5EFE6;max-width:440px;width:100%;padding:clamp(32px,4vw,48px);position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <button aria-label="Close" onClick="{{ closePopup }}" style="position:absolute;top:16px;right:16px;width:36px;height:36px;display:flex;align-items:center;justify-content:center">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M1 1l14 14M15 1L1 15"></path></svg>
+      </button>
+      <img src="./assets/seal.png" alt="" width="40" height="40" style="width:40px;height:40px;opacity:0.85">
+      <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6F675E">Welcome to eshyn</div>
+      <h2 style="margin:0;font-family:'Gilda Display',serif;font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.15">Get 10% off your first order</h2>
+      <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;color:#4A7A4A;font-size:14.5px">Thank you — your code WELCOME10 is on its way to your inbox.</p>
+      </sc-if>
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitForm }}" style="width:100%;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;color:#4A443E;font-size:14px">Share your details and we'll send the code to your inbox.</p>
+          <input type="text" required="" placeholder="Your name" value="{{ formName }}" onChange="{{ setFormName }}" style="height:46px;padding:0 14px;border:1px solid rgba(30,27,24,0.2);background:transparent;font:inherit;font-size:14px;color:#1E1B18;outline:none">
+          <input type="tel" required="" placeholder="Phone number" value="{{ formPhone }}" onChange="{{ setFormPhone }}" style="height:46px;padding:0 14px;border:1px solid rgba(30,27,24,0.2);background:transparent;font:inherit;font-size:14px;color:#1E1B18;outline:none">
+          <input type="email" placeholder="Email address (optional)" value="{{ formEmail }}" onChange="{{ setFormEmail }}" style="height:46px;padding:0 14px;border:1px solid rgba(30,27,24,0.2);background:transparent;font:inherit;font-size:14px;color:#1E1B18;outline:none">
+          <label style="display:flex;align-items:flex-start;gap:8px;text-align:left;font-size:12.5px;color:#4A443E;cursor:pointer">
+            <input type="checkbox" required="" checked="{{ formAgreed }}" onChange="{{ setFormAgreed }}" style="margin-top:3px">
+            <span>I agree to the <a href="#" style="color:#6B1E1E">Terms &amp; Conditions</a> and Privacy Policy.</span>
+          </label>
+          <button type="submit" style="height:48px;background:#1E1B18;color:#F5EFE6;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-top:4px">Get my code</button>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<div aria-hidden="{{ cartOverlayHidden }}" onClick="{{ closeCart }}" style="position:fixed;inset:0;z-index:119;background:rgba(30,27,24,0.4);opacity:{{ cartOverlayOp }};visibility:{{ cartVis }};transition:opacity 400ms cubic-bezier(0.22,1,0.36,1),visibility 400ms"></div>
+<div role="dialog" aria-modal="true" aria-label="Your bag" style="position:fixed;top:0;right:0;bottom:0;z-index:120;width:min(400px,100%);background:#F5EFE6;transform:translateX({{ cartX }});transition:transform 450ms cubic-bezier(0.22,1,0.36,1);display:flex;flex-direction:column">
+  <div style="height:72px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(168,128,63,0.3)">
+    <span style="font-family:'Gilda Display',serif;font-size:22px">Your bag ({{ bag }})</span>
+    <button aria-label="Close bag" onClick="{{ closeCart }}" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#1E1B18" stroke-width="1"><path d="M1 1l14 14M15 1L1 15"></path></svg>
+    </button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:16px 24px;display:flex;flex-direction:column;gap:16px">
+    <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:48px 0;text-align:center;color:#6F675E;font-size:14px">Your bag is empty.</div>
+    </sc-if>
+    <sc-for list="{{ cartItems }}" as="ci" hint-placeholder-count="0">
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(168,128,63,0.3)">
+        <div style="width:60px;height:74px;flex:none;background-color:#EFE7DB;background-size:cover;background-position:center" style="{{ ci.imgStyle }}"></div>
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+          <span style="font-family:'Gilda Display',serif;font-size:17px">{{ ci.name }}</span>
+          <span style="font-size:12px;color:#6F675E">{{ ci.meta }}</span>
+          <span style="font-size:14px">{{ ci.price }}</span>
+          <div style="display:flex;align-items:center;border:1px solid rgba(30,27,24,0.2);width:fit-content;margin-top:4px">
+            <button aria-label="Decrease quantity" onClick="{{ ci.dec }}" style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:14px">−</button>
+            <span style="width:24px;text-align:center;font-size:13px">{{ ci.qty }}</span>
+            <button aria-label="Increase quantity" onClick="{{ ci.inc }}" style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:14px">+</button>
+          </div>
+        </div>
+        <button aria-label="Remove {{ ci.name }}" onClick="{{ ci.remove }}" style="flex:none;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A8279;align-self:flex-start;padding:4px">Remove</button>
+      </div>
+    </sc-for>
+  </div>
+  <div style="flex:none;padding:20px 24px 24px;border-top:1px solid rgba(168,128,63,0.3);display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:12px;color:#4A443E">{{ shipMsg }}</span>
+      <div style="position:relative;height:3px;background:rgba(30,27,24,0.12);margin-top:14px">
+        <div style="position:absolute;left:0;top:0;height:100%;width:{{ shipProgress }}%;background:#6B1E1E;transition:width 500ms cubic-bezier(0.22,1,0.36,1)"></div>
+        <div style="position:absolute;top:50%;left:{{ shipProgress }}%;transform:translate(-50%,-50%);transition:left 500ms cubic-bezier(0.22,1,0.36,1)">
+          <svg width="26" height="18" viewBox="0 0 26 18" fill="none">
+            <rect x="0.5" y="4.5" width="14" height="9" fill="#F5EFE6" stroke="#1E1B18"></rect>
+            <path d="M14.5 7.5h6l4 4v2h-10z" fill="#F5EFE6" stroke="#1E1B18"></path>
+            <circle cx="6" cy="15" r="2" fill="#1E1B18"></circle>
+            <circle cx="19" cy="15" r="2" fill="#1E1B18"></circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <a href="./eshyn Collection.dc.html" onClick="{{ closeCart }}" style="height:52px;display:flex;align-items:center;justify-content:center;background:#1E1B18;color:#F5EFE6;font-size:11px;letter-spacing:0.18em;text-transform:uppercase">Checkout</a>
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;productIndex&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:0,&quot;options&quot;:[&quot;Degh&quot;,&quot;Lamiaceae&quot;,&quot;Nocturne&quot;,&quot;Oudh&quot;,&quot;Shatpatri&quot;,&quot;Santalum Chandan&quot;,&quot;Jasmine&quot;,&quot;Khas&quot;],&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1440, drawer: false, bag: 0, size: 'attar', qty: 1, added: false, accOpen: 0, thumb: 0, rev: 0, revOp: 1, copied: -1, cartOpen: false, cartItems: [], popupOpen: false, formName: '', formPhone: '', formEmail: '', formAgreed: false, formSubmitted: false };
+  REV = [
+    { q: 'A verified customer review appears here, quoted exactly as written', name: 'Customer name' },
+    { q: 'Reviews are pulled only from confirmed orders — never written by us', name: 'Customer name' },
+    { q: 'Keep each quote short: one sentence about how the scent wears', name: 'Customer name' },
+  ];
+
+  P = [
+    { name: 'Degh', hi: 'मिट्टी', notes: 'Petrichor · Vetiver · Clay', tint: '#6B1E1E', img: 'degh', a: 1250, s: 1650, family: 'Earthy & Woody',
+      pyramid: [{ tier: 'Top', notes: 'Rain-wet clay, green leaf' }, { tier: 'Heart', notes: 'Vetiver, warm earth' }, { tier: 'Base', notes: 'Sandalwood, soft musk' }] },
+    { name: 'Lamiaceae', hi: '', notes: 'Lavender · Clary sage · Dry hay', tint: '#9C86C4', img: 'lavender', a: 1250, s: 1650, family: 'Fresh & Herbal' },
+    { name: 'Nocturne', hi: '', notes: 'Night blooms · Amber · Musk', tint: '#1F2547', img: 'nocturne', a: 1350, s: 1750, family: 'Oriental & Resinous' },
+    { name: 'Oudh', hi: '', kind: 'Traditional', notes: 'Agarwood · Smoke · Resin', tint: '#1E1B18', img: 'oudh', a: 1850, s: 2250, family: 'Oriental & Resinous' },
+    { name: 'Shatpatri', hi: 'शतपत्री', notes: 'Rose · Petal · Honey', tint: '#B5579E', img: 'rose', a: 1350, s: 1750, family: 'Floral' },
+    { name: 'Santalum Chandan', hi: 'चंदन', notes: 'Sandalwood · Cream · Cardamom', tint: '#B07A45', img: 'chandan', a: 1450, s: 1850, family: 'Earthy & Woody' },
+    { name: 'Jasmine', hi: 'मोगरा', notes: 'Mogra · Green stem · Tea', tint: '#8C7B66', img: 'jasmine', a: 1350, s: 1750, family: 'Floral' },
+    { name: 'Khas', hi: 'खस', notes: 'Vetiver root · Wet earth · Mint', tint: '#5E9AAB', img: 'khas', a: 1250, s: 1650, family: 'Fresh & Herbal' },
+  ];
+  ACC = [
+    { title: 'How to wear', body: 'Touch the applicator to wrists and behind the ears for attar; for the spray, one or two sprays from a hand’s length away. Let it settle for a minute before judging the scent.' },
+    { title: 'Shipping & returns', body: 'Orders across India typically arrive within 3–5 working days. Unopened bottles can be returned within 7 days of delivery.' },
+    { title: 'Ingredients', body: 'A pure botanical blend with no synthetic fillers, hand-mixed in small batches in India.' },
+  ];
+
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    const params = new URLSearchParams(window.location.search);
+    const idx = parseInt(params.get('p'), 10);
+    this.productIndex = Number.isInteger(idx) && this.P[idx] ? idx : (this.props.productIndex ?? 0);
+    this.runMarquee('offers', 24);
+    this.runMarquee('pyr', 20);
+    const today = new Date().toDateString();
+    if (localStorage.getItem('eshyn_popup_date') !== today) {
+      this.popupT = setTimeout(() => { this.setState({ popupOpen: true }); localStorage.setItem('eshyn_popup_date', today); }, 10000);
+    }
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); if (this.offersRaf) cancelAnimationFrame(this.offersRaf); if (this.pyrRaf) cancelAnimationFrame(this.pyrRaf); clearTimeout(this.popupT); }
+  addToCart(name, priceNum, meta, img) {
+    this.setState(s => {
+      const idx = s.cartItems.findIndex(c => c.name === name && c.meta === meta);
+      let items;
+      if (idx > -1) { items = [...s.cartItems]; items[idx] = { ...items[idx], qty: items[idx].qty + 1 }; }
+      else items = [...s.cartItems, { name, priceNum, meta, img, qty: 1 }];
+      return { bag: s.bag + 1, cartItems: items, cartOpen: true };
+    });
+  }
+  changeQty(name, meta, delta) {
+    this.setState(s => ({ cartItems: s.cartItems.map(c => c.name === name && c.meta === meta ? { ...c, qty: Math.max(1, c.qty + delta) } : c), bag: Math.max(0, s.bag + delta) }));
+  }
+  removeFromCart(name, meta) {
+    this.setState(s => {
+      const item = s.cartItems.find(c => c.name === name && c.meta === meta);
+      return { cartItems: s.cartItems.filter(c => !(c.name === name && c.meta === meta)), bag: Math.max(0, s.bag - (item ? item.qty : 0)) };
+    });
+  }
+  runMarquee(name, speed) {
+    this[name + 'Offset'] = 0;
+    let last = performance.now();
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const step = now => {
+      const dt = (now - last) / 1000; last = now;
+      const el = this[name + 'El'];
+      if (el && !this[name + 'Paused'] && !reduce) {
+        this[name + 'Offset'] += speed * dt;
+        const half = el.scrollWidth / 2;
+        if (half > 0 && this[name + 'Offset'] >= half) this[name + 'Offset'] -= half;
+        el.style.transform = 'translateX(' + (-this[name + 'Offset']) + 'px)';
+      }
+      this[name + 'Raf'] = requestAnimationFrame(step);
+    };
+    this[name + 'Raf'] = requestAnimationFrame(step);
+  }
+  goRev(dir) {
+    this.setState({ revOp: 0 });
+    setTimeout(() => this.setState(s => ({ rev: (s.rev + dir + this.REV.length) % this.REV.length, revOp: 1 })), 400);
+  }
+  fmt(n) { return '₹' + n.toLocaleString('en-IN'); }
+
+  renderVals() {
+    const st = this.state, w = st.w, m = w < 768, t = w < 1024;
+    const idx = this.productIndex ?? (this.props.productIndex ?? 0);
+    const raw = this.P[idx];
+    const size = st.size, active = '#1E1B18', idle = '#8A8279';
+    const origins = ['50% 58%', '50.5% 69%', '35% 40%'];
+
+    const base = size === 'attar' ? raw.a : raw.s;
+    const mrpVal = Math.ceil((base * 1.2) / 50) * 50;
+    const discountPct = Math.round((1 - base / mrpVal) * 100);
+    const p = {
+      name: raw.name, hi: raw.hi, notes: raw.notes, family: raw.family, kindSuffix: raw.kind ? ' · ' + raw.kind : '',
+      img: './assets/' + raw.img + '.jpg', alt: raw.name + ' — square faceted glass bottle with copper cap',
+      tintBg: raw.tint + '14',
+      size: size === 'attar' ? '6 ml' : '30 ml', price: this.fmt(base), mrp: this.fmt(mrpVal), discountPct,
+      attarPrice: this.fmt(raw.a), sprayPrice: this.fmt(raw.s),
+      isAttar: size === 'attar', isSpray: size === 'spray',
+      attarBorder: size === 'attar' ? active : 'rgba(30,27,24,0.2)', sprayBorder: size === 'spray' ? active : 'rgba(30,27,24,0.2)',
+      attarDot: size === 'attar' ? active : 'rgba(30,27,24,0.35)', sprayDot: size === 'spray' ? active : 'rgba(30,27,24,0.35)',
+      setAttar: () => this.setState({ size: 'attar' }), setSpray: () => this.setState({ size: 'spray' }),
+    };
+
+    const related = this.P.filter((_, i) => i !== idx).slice(0, 4).map((r, i) => ({
+      name: r.name, img: './assets/' + r.img + '.jpg', alt: r.name + ' bottle', tintBg: r.tint + '10',
+      price: this.fmt(r.a), href: './eshyn Product.dc.html?p=' + this.P.indexOf(r),
+    }));
+
+    return {
+      headerCols: t ? '1fr auto' : '1fr auto 1fr', navDisplay: t ? 'none' : 'flex', burgerDisplay: t ? 'flex' : 'none', acctDisplay: m ? 'none' : 'flex',
+      bag: st.bag,
+      drawerOp: st.drawer ? 1 : 0, drawerVis: st.drawer ? 'visible' : 'hidden',
+      openDrawer: () => this.setState({ drawer: true }), closeDrawer: () => this.setState({ drawer: false }),
+      gridCols: m ? '1fr' : t ? '1fr 1fr' : '1fr 1fr', galleryPos: m ? 'static' : 'sticky',
+      p,
+      galleryScale: 1.1 + st.thumb * 0.25, galleryOrigin: origins[st.thumb] || '50% 55%',
+      thumbs: [0, 1, 2].map(i => ({ label: 'View ' + (i + 1), border: st.thumb === i ? '#1E1B18' : 'transparent', scale: 1.1 + i * 0.25, origin: origins[i], go: () => this.setState({ thumb: i }) })),
+      qty: st.qty, incQty: () => this.setState(s => ({ qty: s.qty + 1 })), decQty: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
+      addLabel: st.added ? 'Added to bag' : 'Add to bag',
+      addToBag: () => { this.addToCart(p.name, base, p.size + ' · ' + (size === 'attar' ? 'Attar' : 'Spray'), p.img); this.setState({ added: true }); clearTimeout(this.addT); this.addT = setTimeout(() => this.setState({ added: false }), 1800); },
+      offersRef: el => { this.offersEl = el; }, pauseOffers: () => { this.offersPaused = true; }, resumeOffers: () => { this.offersPaused = false; },
+      offersLoop: (() => {
+        const base = [
+          { code: 'WELCOME10', desc: '10% off on your first order', copy: () => { navigator.clipboard && navigator.clipboard.writeText('WELCOME10'); this.setState({ copied: 0 }); clearTimeout(this.copyT); this.copyT = setTimeout(() => this.setState({ copied: -1 }), 1500); }, idx: 0 },
+          { code: 'FREESHIP', desc: 'Free shipping on orders above ₹1,500', copy: () => { navigator.clipboard && navigator.clipboard.writeText('FREESHIP'); this.setState({ copied: 1 }); clearTimeout(this.copyT); this.copyT = setTimeout(() => this.setState({ copied: -1 }), 1500); }, idx: 1 },
+        ].map(o => ({ ...o, label: st.copied === o.idx ? 'Copied' : 'Copy' }));
+        return base.concat(base);
+      })(),
+      buyLabel: st.bought ? 'Redirecting…' : 'Buy now',
+      buyNow: () => { this.addToCart(p.name, base, p.size + ' · ' + (size === 'attar' ? 'Attar' : 'Spray'), p.img); this.setState({ bought: true, cartOpen: true }); clearTimeout(this.buyT); this.buyT = setTimeout(() => this.setState({ bought: false }), 1800); },
+      hasPyramid: !!raw.pyramid,
+      pyrRef: el => { this.pyrEl = el; }, pausePyr: () => { this.pyrPaused = true; }, resumePyr: () => { this.pyrPaused = false; },
+      pyramidLoop: (() => {
+        const demoImg = name => {
+          const n = name.toLowerCase();
+          if (n.includes('clay') || n.includes('earth')) return './assets/degh.jpg';
+          if (n.includes('vetiver')) return './assets/khas.jpg';
+          if (n.includes('leaf') || n.includes('lavender') || n.includes('sage')) return './assets/lavender.jpg';
+          if (n.includes('sandalwood') || n.includes('cardamom') || n.includes('cream')) return './assets/chandan.jpg';
+          if (n.includes('musk') || n.includes('amber') || n.includes('night')) return './assets/nocturne.jpg';
+          if (n.includes('rose') || n.includes('honey') || n.includes('petal')) return './assets/rose.jpg';
+          if (n.includes('mogra') || n.includes('jasmine') || n.includes('tea')) return './assets/jasmine.jpg';
+          if (n.includes('agarwood') || n.includes('smoke') || n.includes('resin')) return './assets/oudh.jpg';
+          return './assets/' + raw.img + '.jpg';
+        };
+        const items = [];
+        (raw.pyramid || []).forEach(n => n.notes.split(',').map(s => s.trim()).forEach(name => items.push({ tier: n.tier, notes: name, img: demoImg(name) })));
+        const make = suffix => items.map((n, i) => ({ ...n, slot: 'pyr-' + idx + '-' + i + suffix, ph: n.notes }));
+        return make('-a').concat(make('-b'));
+      })(),
+      trustMini: [
+        { label: '100% natural', icon: React.createElement('path', { d: 'M10 2c3 3 6 6 6 10a6 6 0 1 1-12 0c0-4 3-7 6-10z' }), border: 'none' },
+        { label: 'Free shipping over ₹1,500', icon: React.createElement('path', { d: 'M1 5h11v9H1zM12 8h4l3 3v3h-7zM5 17.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM15.5 17.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' }), border: '1px solid rgba(168,128,63,0.3)' },
+        { label: '7-day easy returns', icon: React.createElement('path', { d: 'M3 10a7 7 0 1 1 2.1 5M3 10V5M3 10h5' }), border: '1px solid rgba(168,128,63,0.3)' },
+      ],
+      accordion: this.ACC.map((a, i) => ({ ...a, open: st.accOpen === i, rot: st.accOpen === i ? '45deg' : '0deg', maxH: st.accOpen === i ? '200px' : '0px', toggle: () => this.setState(s => ({ accOpen: s.accOpen === i ? -1 : i })) })),
+      review: this.REV[st.rev], revOp: st.revOp, revCount: '0' + (st.rev + 1) + ' / 0' + this.REV.length,
+      prevRev: () => this.goRev(-1), nextRev: () => this.goRev(1),
+      craftBannerCols: m ? '1fr' : '1fr 1fr',
+      relCols: m ? 'repeat(2, minmax(0,1fr))' : 'repeat(4, minmax(0,1fr))',
+      related,
+      footCols: m ? 'repeat(2, minmax(0,1fr))' : 'repeat(4, minmax(0,1fr))',
+      footer: [
+        { h: 'Shop', links: [{ label: 'Attars', href: './eshyn Collection.dc.html' }, { label: 'Perfume sprays', href: './eshyn Collection.dc.html' }, { label: 'Discovery set', href: './eshyn Home.dc.html#discovery' }, { label: 'Gift cards', href: '#' }] },
+        { h: 'House', links: [{ label: 'Our craft', href: './eshyn Home.dc.html#craft' }, { label: 'Journal', href: './eshyn Home.dc.html#journal' }, { label: 'Scent finder', href: './eshyn Home.dc.html' }, { label: 'Contact', href: '#' }] },
+        { h: 'Care', links: [{ label: 'Shipping', href: '#' }, { label: 'Returns', href: '#' }, { label: 'Caring for attar', href: '#' }, { label: 'FAQ', href: './eshyn Home.dc.html#faq' }] },
+        { h: 'Legal', links: [{ label: 'Terms', href: '#' }, { label: 'Privacy', href: '#' }, { label: 'Refund policy', href: '#' }] },
+      ],
+      payments: ['UPI', 'RuPay', 'Visa', 'Mastercard', 'Amex'],
+      popupOpen: st.popupOpen, closePopup: () => this.setState({ popupOpen: false }),
+      formName: st.formName, setFormName: e => this.setState({ formName: e.target.value }),
+      formEmail: st.formEmail, setFormEmail: e => this.setState({ formEmail: e.target.value }),
+      formPhone: st.formPhone, setFormPhone: e => this.setState({ formPhone: e.target.value }),
+      formAgreed: st.formAgreed, setFormAgreed: e => this.setState({ formAgreed: e.target.checked }),
+      formSubmitted: st.formSubmitted, showForm: !st.formSubmitted,
+      submitForm: e => { e.preventDefault(); if (!st.formAgreed) return; this.setState({ formSubmitted: true }); },
+      cartOpen: st.cartOpen, closeCart: () => this.setState({ cartOpen: false }),
+      cartItems: st.cartItems.map(ci => ({ ...ci, price: this.fmt(ci.priceNum * ci.qty),
+        imgStyle: { width: 60, height: 74, flex: 'none', overflow: 'hidden', backgroundColor: '#EFE7DB', backgroundSize: 'cover', backgroundPosition: 'center', ...(ci.img ? { backgroundImage: 'url(' + ci.img + ')', mixBlendMode: 'multiply' } : {}) },
+        inc: () => this.changeQty(ci.name, ci.meta, 1), dec: () => this.changeQty(ci.name, ci.meta, -1), remove: () => this.removeFromCart(ci.name, ci.meta) })),
+      cartEmpty: st.cartItems.length === 0,
+      shipProgress: Math.min(100, Math.round((st.cartItems.reduce((sum, c) => sum + c.priceNum * c.qty, 0) / 1500) * 100)),
+      shipMsg: (() => { const total = st.cartItems.reduce((sum, c) => sum + c.priceNum * c.qty, 0); return total >= 1500 ? 'You\'ve unlocked free delivery!' : 'Add ' + this.fmt(1500 - total) + ' more for free delivery'; })(),
+      cartX: st.cartOpen ? '0' : '100%', cartVis: st.cartOpen ? 'visible' : 'hidden', cartOverlayOp: st.cartOpen ? 1 : 0, cartOverlayHidden: !st.cartOpen,
+      stop: e => e.stopPropagation(),
+    };
+  }
+}
+</script>
+</body>
+</html>
